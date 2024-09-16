@@ -4,4 +4,4 @@ A Health&Med, é uma Operadora de Saúde que tem como objetivo digitalizar seus 
 Recentemente, a empresa recebeu um aporte e decidiu investir no desenvolvimento de um sistema proprietário, visando proporcionar um **processo de Agendamentos de Consultas Médicas 100% digital e mais ágil**.   
 Para viabilizar o desenvolvimento de um sistema que esteja em conformidade com as melhores práticas de desenvolvimento, a _Health&Med_ contratou os alunos da turma SOAT da Pós Graduação da FIAP para fazer a análise do projeto e desenvolver o MVP da solução.   
 
-O objetivo do **Hackathon** é a entrega de um produto de MVP desenvolvido e que cumpra os requisitos funcionais e não funcionais.
+O objetivo do **Hackathon** é a entrega de um produto de MVP desenvolvido e que cumpra os [requisitos funcionais e não funcionais](./Requisitos.md).
