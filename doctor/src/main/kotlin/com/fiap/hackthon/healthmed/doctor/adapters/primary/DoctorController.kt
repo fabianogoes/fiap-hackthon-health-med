@@ -1,10 +1,10 @@
-package com.fiap.hackthon.healthmed.doctor.primary.api
+package com.fiap.hackthon.healthmed.doctor.adapters.primary
 
-import com.fiap.hackthon.healthmed.doctor.domain.ports.DoctorReadingPort
+import com.fiap.hackthon.healthmed.doctor.ports.DoctorReadingPort
 import com.fiap.hackthon.healthmed.doctor.domain.entity.Doctor
-import com.fiap.hackthon.healthmed.doctor.domain.ports.DoctorCreationPort
-import com.fiap.hackthon.healthmed.doctor.domain.ports.DoctorDeletionPort
-import com.fiap.hackthon.healthmed.doctor.domain.ports.DoctorUpdatePort
+import com.fiap.hackthon.healthmed.doctor.ports.DoctorCreationPort
+import com.fiap.hackthon.healthmed.doctor.ports.DoctorDeletionPort
+import com.fiap.hackthon.healthmed.doctor.ports.DoctorUpdatePort
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.DeleteMapping

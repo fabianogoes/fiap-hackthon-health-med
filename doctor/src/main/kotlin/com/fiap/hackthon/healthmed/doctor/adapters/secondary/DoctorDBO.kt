@@ -1,4 +1,4 @@
-package com.fiap.hackthon.healthmed.doctor.secondary
+package com.fiap.hackthon.healthmed.doctor.adapters.secondary
 
 import com.fiap.hackthon.healthmed.doctor.domain.entity.CRM
 import com.fiap.hackthon.healthmed.doctor.domain.entity.Doctor

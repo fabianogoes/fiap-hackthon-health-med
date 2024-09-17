@@ -1,7 +1,7 @@
-package com.fiap.hackthon.healthmed.doctor.secondary
+package com.fiap.hackthon.healthmed.doctor.adapters.secondary
 
 import com.fiap.hackthon.healthmed.doctor.domain.entity.Doctor
-import com.fiap.hackthon.healthmed.doctor.domain.ports.DoctorPersistencePort
+import com.fiap.hackthon.healthmed.doctor.ports.DoctorPersistencePort
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 import java.util.UUID

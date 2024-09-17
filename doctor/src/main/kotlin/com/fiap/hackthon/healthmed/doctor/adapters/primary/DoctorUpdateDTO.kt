@@ -1,4 +1,4 @@
-package com.fiap.hackthon.healthmed.doctor.primary.api
+package com.fiap.hackthon.healthmed.doctor.adapters.primary
 
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank

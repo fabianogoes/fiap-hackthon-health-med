@@ -2,8 +2,8 @@ package com.fiap.hackthon.healthmed.doctor.domain.usecase
 
 import com.fiap.hackthon.healthmed.doctor.domain.entity.CRM
 import com.fiap.hackthon.healthmed.doctor.domain.entity.Doctor
-import com.fiap.hackthon.healthmed.doctor.domain.ports.DoctorCreationPort
-import com.fiap.hackthon.healthmed.doctor.domain.ports.DoctorPersistencePort
+import com.fiap.hackthon.healthmed.doctor.ports.DoctorCreationPort
+import com.fiap.hackthon.healthmed.doctor.ports.DoctorPersistencePort
 import com.fiap.hackthon.healthmed.shared.CPF
 import com.fiap.hackthon.healthmed.shared.Email
 import com.fiap.hackthon.healthmed.shared.logger

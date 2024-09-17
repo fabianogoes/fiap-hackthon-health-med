@@ -1,4 +1,4 @@
-package com.fiap.hackthon.healthmed.doctor.domain.ports
+package com.fiap.hackthon.healthmed.doctor.ports
 
 import com.fiap.hackthon.healthmed.doctor.domain.entity.Doctor
 import java.util.UUID

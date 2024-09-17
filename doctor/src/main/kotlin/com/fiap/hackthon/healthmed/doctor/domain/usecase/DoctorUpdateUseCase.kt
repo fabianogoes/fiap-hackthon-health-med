@@ -2,8 +2,8 @@ package com.fiap.hackthon.healthmed.doctor.domain.usecase
 
 import com.fiap.hackthon.healthmed.doctor.domain.entity.Doctor
 import com.fiap.hackthon.healthmed.doctor.domain.exception.DoctorNotFoundException
-import com.fiap.hackthon.healthmed.doctor.domain.ports.DoctorUpdatePort
-import com.fiap.hackthon.healthmed.doctor.domain.ports.DoctorPersistencePort
+import com.fiap.hackthon.healthmed.doctor.ports.DoctorUpdatePort
+import com.fiap.hackthon.healthmed.doctor.ports.DoctorPersistencePort
 import com.fiap.hackthon.healthmed.shared.Email
 import com.fiap.hackthon.healthmed.shared.logger
 import jakarta.inject.Named

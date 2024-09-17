@@ -1,4 +1,4 @@
-package com.fiap.hackthon.healthmed.doctor.primary.api
+package com.fiap.hackthon.healthmed.doctor.adapters.primary
 
 import com.fiap.hackthon.healthmed.doctor.domain.exception.DoctorNotFoundException
 import org.springframework.http.HttpStatus
