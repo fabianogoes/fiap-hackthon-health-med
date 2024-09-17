@@ -4,6 +4,9 @@ on:
   push:
     branches: [ main ]
 
+env:
+  DOCKER_IMAGE: health-med-api:latest
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -36,9 +39,18 @@ jobs:
       run: chmod +x gradlew        
     - name: Build
       run: ./gradlew build      
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image:$GITHUB_SHA
-    - name: Log in to the Docker registry
-      run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
-    - name: Push the Docker image
-      run: docker push ${{secrets.DOCKER_USERNAME}}/health-med-api:latest
+      
+    - name: Log in to Docker Hub
+      uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}             
+        
+    - name: Build and push Docker image
+      id: push
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: ${{ env.DOCKER_IMAGE }}
