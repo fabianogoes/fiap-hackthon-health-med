@@ -5,6 +5,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 buildscript {
 	ext {
 		apacheCommonsVersion    = "2.16.1"
+		jakartaInjectApiVersion = "2.0.1"
 	}
 }
 
@@ -13,6 +14,7 @@ plugins {
 	id "org.jetbrains.kotlin.plugin.spring" version "1.9.24" apply false
 	id "org.springframework.boot" version "3.3.2" apply false
 	id "io.spring.dependency-management" version "1.1.6" apply false
+	id 'org.jetbrains.kotlin.plugin.jpa' version '1.9.24' apply false
 }
 
 allprojects {
@@ -30,6 +32,7 @@ subprojects {
 	apply plugin: "org.jetbrains.kotlin.plugin.spring"
 	apply plugin: "org.springframework.boot"
 	apply plugin: "io.spring.dependency-management"
+	apply plugin: "org.jetbrains.kotlin.plugin.jpa"
 
 	sourceCompatibility = JavaVersion.VERSION_17
 	targetCompatibility = JavaVersion.VERSION_17
@@ -38,8 +41,10 @@ subprojects {
 		implementation "com.fasterxml.jackson.module:jackson-module-kotlin"
 		implementation "org.jetbrains.kotlin:kotlin-reflect"
 		implementation "commons-io:commons-io:$apacheCommonsVersion"
+		implementation "jakarta.inject:jakarta.inject-api:$jakartaInjectApiVersion"
 
 		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		implementation("org.springframework.boot:spring-boot-starter-validation")
 		runtimeOnly 'org.postgresql:postgresql'
 
 		testImplementation "org.springframework.boot:spring-boot-starter-test"
