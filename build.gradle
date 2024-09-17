@@ -1,43 +1,79 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
+
+buildscript {
+	ext {
+		apacheCommonsVersion    = "2.16.1"
+	}
+}
+
 plugins {
-	id 'org.jetbrains.kotlin.jvm' version '1.9.25'
-	id 'org.jetbrains.kotlin.plugin.spring' version '1.9.25'
-	id 'org.springframework.boot' version '3.3.3'
-	id 'io.spring.dependency-management' version '1.1.6'
-	id 'org.jetbrains.kotlin.plugin.jpa' version '1.9.25'
+	id "org.jetbrains.kotlin.jvm" version "1.9.24" apply false
+	id "org.jetbrains.kotlin.plugin.spring" version "1.9.24" apply false
+	id "org.springframework.boot" version "3.3.2" apply false
+	id "io.spring.dependency-management" version "1.1.6" apply false
 }
 
-group = 'com.fiap.hackthon'
-version = '0.0.1-SNAPSHOT'
-
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(17)
+allprojects {
+	repositories {
+		mavenCentral()
 	}
 }
 
-repositories {
-	mavenCentral()
-}
+subprojects {
+	version = "0.0.1-SNAPSHOT"
 
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'com.fasterxml.jackson.module:jackson-module-kotlin'
-	implementation 'org.jetbrains.kotlin:kotlin-reflect'
-	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
-	runtimeOnly 'org.postgresql:postgresql'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.jetbrains.kotlin:kotlin-test-junit5'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-}
+	apply plugin: "idea"
+	apply plugin: "kotlin"
+	apply plugin: "org.jetbrains.kotlin.jvm"
+	apply plugin: "org.jetbrains.kotlin.plugin.spring"
+	apply plugin: "org.springframework.boot"
+	apply plugin: "io.spring.dependency-management"
 
-kotlin {
-	compilerOptions {
-		freeCompilerArgs.addAll '-Xjsr305=strict'
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+
+	dependencies {
+		implementation "com.fasterxml.jackson.module:jackson-module-kotlin"
+		implementation "org.jetbrains.kotlin:kotlin-reflect"
+		implementation "commons-io:commons-io:$apacheCommonsVersion"
+
+		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+		runtimeOnly 'org.postgresql:postgresql'
+
+		testImplementation "org.springframework.boot:spring-boot-starter-test"
+		testImplementation "org.jetbrains.kotlin:kotlin-test-junit5"
+		testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 	}
-}
 
-tasks.named('test') {
-	useJUnitPlatform()
+	java {
+		toolchain {
+			languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_17.toString()))
+		}
+	}
+
+	kotlin {
+		jvmToolchain {
+			languageVersion.set(JavaLanguageVersion.of(JavaVersion.VERSION_17.toString()))
+		}
+	}
+
+
+	tasks.withType(Test).configureEach {
+		useJUnitPlatform()
+	}
+
+	tasks.withType(KotlinCompile).configureEach {
+		compilerOptions {
+			freeCompilerArgs.add("-Xjsr305=strict")
+			jvmTarget.set(JvmTarget.JVM_17)
+		}
+	}
+
+	tasks.withType(BootJar).tap {
+		configureEach {
+			mainClass.set("com.fiap.hackthon.healthmed.app.AppRunKt")  // Use mainClass em vez de mainClassName
+		}
+	}
 }
