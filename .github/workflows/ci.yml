@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'   
+
+    - name: Build
+      run: ./gradlew build
+      
+    - name: Test
+      run: ./gradlew test
+      
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image:$GITHUB_SHA
+      
+    - name: Log in to the Docker registry
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      
+    - name: Push the Docker image
+      run: docker push $DOCKER_USERNAME/my-image:$GITHUB_SHA
