@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  health-med-db:
+    container_name: health-med-db
+    image: postgres:12
+    environment:
+      POSTGRES_PASSWORD: pass
+      POSTGRES_USER: postgres
+      POSTGRES_DB: health-med
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - health-med
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "user@pgadmin.com"
+      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2024!"
+    ports:
+      - "5000:80"
+    depends_on:
+      - health-med-db
+    networks:
+      - health-med
+
+volumes:
+  pgdata: {}
+
+networks:
+  health-med:
+    driver: bridge
