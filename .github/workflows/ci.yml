@@ -35,13 +35,10 @@ jobs:
     - name: Grant execute permissions
       run: chmod +x gradlew        
     - name: Build
-      run: ./gradlew build
-      
-    # - name: Build the Docker image
-    #   run: docker build . --file Dockerfile --tag my-image:$GITHUB_SHA
-      
-    # - name: Log in to the Docker registry
-    #   run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      
-    # - name: Push the Docker image
-    #   run: docker push $DOCKER_USERNAME/my-image:$GITHUB_SHA
+      run: ./gradlew build      
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-image:$GITHUB_SHA
+    - name: Log in to the Docker registry
+      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+    - name: Push the Docker image
+      run: docker push $DOCKER_USERNAME/my-image:$GITHUB_SHA
