@@ -41,4 +41,4 @@ jobs:
     - name: Log in to the Docker registry
       run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
     - name: Push the Docker image
-      run: docker push ${{secrets.DOCKER_USERNAME}}/my-image:$GITHUB_SHA
+      run: docker push ${{secrets.DOCKER_USERNAME}}/health-med-api:latest
