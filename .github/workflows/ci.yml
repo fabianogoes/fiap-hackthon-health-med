@@ -5,7 +5,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,18 +17,23 @@ jobs:
 
     - name: Grant execute permissions
       run: chmod +x gradlew
-      
+
+    - name: Test
+      run: ./gradlew test
+
+  build:    
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-java@v4
     - name: Build
       run: ./gradlew build
       
-    - name: Test
-      run: ./gradlew test
+    # - name: Build the Docker image
+    #   run: docker build . --file Dockerfile --tag my-image:$GITHUB_SHA
       
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image:$GITHUB_SHA
+    # - name: Log in to the Docker registry
+    #   run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
       
-    - name: Log in to the Docker registry
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      
-    - name: Push the Docker image
-      run: docker push $DOCKER_USERNAME/my-image:$GITHUB_SHA
+    # - name: Push the Docker image
+    #   run: docker push $DOCKER_USERNAME/my-image:$GITHUB_SHA
