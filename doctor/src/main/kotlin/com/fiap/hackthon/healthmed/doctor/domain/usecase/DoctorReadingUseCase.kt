@@ -9,7 +9,7 @@ import jakarta.inject.Named
 import java.util.UUID
 
 @Named
-class DoctorUseCaseReading(
+class DoctorReadingUseCase(
     private val doctorPersistencePort: DoctorPersistencePort,
 ): DoctorReadingPort {
     private val log = logger<DoctorCreationUseCase>()
