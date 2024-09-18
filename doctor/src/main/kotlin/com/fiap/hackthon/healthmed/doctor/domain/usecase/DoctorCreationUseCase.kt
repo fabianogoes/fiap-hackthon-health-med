@@ -17,7 +17,7 @@ class DoctorCreationUseCase(
     private val log = logger<DoctorCreationUseCase>()
 
     override fun doCreate(name: String, cpf: String, email: String, crm: String, password: String): Doctor {
-        log.info("Creating $name $cpf $email $crm $password")
+        log.info("Creating name: $name, cpf: $cpf, email: $email, crm: $crm, password: $password")
 
         val doctor = Doctor(
             id = UUID.randomUUID(),
