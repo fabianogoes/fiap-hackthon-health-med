@@ -4,6 +4,7 @@ import com.fiap.hackthon.healthmed.doctor.domain.entity.CRM
 import com.fiap.hackthon.healthmed.doctor.domain.entity.Doctor
 import com.fiap.hackthon.healthmed.shared.CPF
 import com.fiap.hackthon.healthmed.shared.Email
+import com.fiap.hackthon.healthmed.user.domain.entity.User
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.Table
@@ -19,12 +20,13 @@ data class DoctorDBO(
     val email: String,
     val crm: String,
 ) {
-    fun toEntity(): Doctor = Doctor(
+    fun toEntity(user: User): Doctor = Doctor(
         id = id,
         name = name,
         cpf = CPF(cpf),
         email = Email(email),
-        crm = CRM(crm)
+        crm = CRM(crm),
+        user = user,
     )
 }
 

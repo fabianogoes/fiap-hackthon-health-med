@@ -6,12 +6,15 @@ import com.fiap.hackthon.healthmed.patient.ports.PatientPersistencePort
 import com.fiap.hackthon.healthmed.shared.CPF
 import com.fiap.hackthon.healthmed.shared.Email
 import com.fiap.hackthon.healthmed.shared.logger
+import com.fiap.hackthon.healthmed.user.domain.entity.User
+import com.fiap.hackthon.healthmed.user.ports.CreateUserPort
 import jakarta.inject.Named
 import java.util.UUID
 
 @Named
 class PatientCreationUseCase(
     private val patientPersistencePort: PatientPersistencePort,
+    private val userCreateUserPort: CreateUserPort,
 ) : PatientCreationPort {
     private val log = logger<PatientCreationUseCase>()
 
@@ -23,6 +26,7 @@ class PatientCreationUseCase(
             name = name,
             cpf = CPF(cpf),
             email = Email(email),
+            user = userCreateUserPort.create(email, password, User.Role.PATIENT_ROLE.name),
         )
 
         return patientPersistencePort

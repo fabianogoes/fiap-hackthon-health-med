@@ -3,7 +3,4 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
     implementation project(':shared')
-    implementation project(':doctor')
-    implementation project(':patient')
-    implementation project(':user')
 }
