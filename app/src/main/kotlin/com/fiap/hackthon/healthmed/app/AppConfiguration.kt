@@ -2,6 +2,7 @@ package com.fiap.hackthon.healthmed.app
 
 import com.fiap.hackthon.healthmed.doctor.DoctorConfiguration
 import com.fiap.hackthon.healthmed.patient.PatientConfiguration
+import com.fiap.hackthon.healthmed.schedule.ScheduleConfiguration
 import com.fiap.hackthon.healthmed.shared.SharedConfiguration
 import com.fiap.hackthon.healthmed.shared.SharedDateUtils
 import com.fiap.hackthon.healthmed.user.UserConfiguration
@@ -26,5 +27,6 @@ class AppConfiguration {
     DoctorConfiguration::class,
     PatientConfiguration::class,
     UserConfiguration::class,
+    ScheduleConfiguration::class,
 ])
 annotation class EnableHealthMed
