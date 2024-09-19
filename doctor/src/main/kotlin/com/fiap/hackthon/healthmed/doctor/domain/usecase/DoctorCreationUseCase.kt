@@ -9,7 +9,6 @@ import com.fiap.hackthon.healthmed.shared.Email
 import com.fiap.hackthon.healthmed.shared.logger
 import com.fiap.hackthon.healthmed.user.domain.entity.User
 import com.fiap.hackthon.healthmed.user.ports.CreateUserPort
-import com.fiap.hackthon.healthmed.user.ports.UserPersistencePort
 import jakarta.inject.Named
 import java.util.UUID
 
