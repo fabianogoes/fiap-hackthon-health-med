@@ -8,6 +8,7 @@ data class PatientReadResponse(
     val name: String,
     val cpf: String,
     val email: String,
+    val role: String,
 )
 
 fun Patient.toResponseDTO(): PatientReadResponse = PatientReadResponse(
@@ -15,4 +16,5 @@ fun Patient.toResponseDTO(): PatientReadResponse = PatientReadResponse(
     name = name,
     cpf = cpf.number,
     email = email.value,
+    role = user.role.name,
 )

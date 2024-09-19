@@ -6,6 +6,7 @@ buildscript {
 	ext {
 		apacheCommonsVersion    = "2.16.1"
 		jakartaInjectApiVersion = "2.0.1"
+		JwtVersion				= "0.12.3"
 	}
 }
 
@@ -42,13 +43,18 @@ subprojects {
 		implementation "org.jetbrains.kotlin:kotlin-reflect"
 		implementation "commons-io:commons-io:$apacheCommonsVersion"
 		implementation "jakarta.inject:jakarta.inject-api:$jakartaInjectApiVersion"
+		implementation "io.jsonwebtoken:jjwt-api:$JwtVersion"
+		implementation "io.jsonwebtoken:jjwt-impl:$JwtVersion"
+		implementation "io.jsonwebtoken:jjwt-jackson:$JwtVersion"
 
-		implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-		implementation("org.springframework.boot:spring-boot-starter-validation")
-		runtimeOnly 'org.postgresql:postgresql'
+		implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+		implementation "org.springframework.boot:spring-boot-starter-security"
+		implementation "org.springframework.boot:spring-boot-starter-validation"
+		runtimeOnly "org.postgresql:postgresql"
 
 		testImplementation "org.springframework.boot:spring-boot-starter-test"
 		testImplementation "org.jetbrains.kotlin:kotlin-test-junit5"
+		testImplementation "org.springframework.security:spring-security-test"
 		testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 	}
 

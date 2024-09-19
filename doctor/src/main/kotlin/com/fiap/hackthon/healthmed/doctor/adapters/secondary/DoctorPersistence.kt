@@ -2,39 +2,46 @@ package com.fiap.hackthon.healthmed.doctor.adapters.secondary
 
 import com.fiap.hackthon.healthmed.doctor.domain.entity.Doctor
 import com.fiap.hackthon.healthmed.doctor.ports.DoctorPersistencePort
+import com.fiap.hackthon.healthmed.shared.Email
+import com.fiap.hackthon.healthmed.user.ports.UserPersistencePort
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Repository
 import java.util.UUID
 
 @Repository
 class DoctorPostgresPersistence(
-    private val repository: DoctorPostgresRepository,
+    private val doctorRepository: DoctorPostgresRepository,
+    private val userPersistencePort: UserPersistencePort,
 ) : DoctorPersistencePort {
 
     override fun create(doctor: Doctor): Doctor =
-        repository
+        doctorRepository
             .save(doctor.toDBO())
-            .toEntity()
+            .toEntityWithUser()
 
     override fun readAll(): List<Doctor> =
-        repository
+        doctorRepository
             .findAll()
-            .map(DoctorDBO::toEntity)
+            .map { it.toEntityWithUser() }
 
     override fun readOne(id: UUID): Doctor? =
-        repository
+        doctorRepository
             .findByIdOrNull(id)
-            ?.toEntity()
+            ?.toEntityWithUser()
 
     override fun update(doctor: Doctor): Doctor =
-        repository
+        doctorRepository
             .save(doctor.toDBO())
-            .toEntity()
+            .toEntityWithUser()
 
     override fun delete(id: UUID) {
-        repository.deleteById(id)
+        doctorRepository.deleteById(id)
     }
 
+    private fun DoctorDBO.toEntityWithUser(): Doctor {
+        val user = userPersistencePort.findByEmail(Email(email))!!
+        return toEntity(user)
+    }
 }
 
 

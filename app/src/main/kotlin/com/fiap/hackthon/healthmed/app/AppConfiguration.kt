@@ -1,9 +1,10 @@
 package com.fiap.hackthon.healthmed.app
 
-import com.fiap.hackthon.healthmed.doctor.DoctorConfig
-import com.fiap.hackthon.healthmed.patient.PatientConfig
-import com.fiap.hackthon.healthmed.shared.SharedConfig
+import com.fiap.hackthon.healthmed.doctor.DoctorConfiguration
+import com.fiap.hackthon.healthmed.patient.PatientConfiguration
+import com.fiap.hackthon.healthmed.shared.SharedConfiguration
 import com.fiap.hackthon.healthmed.shared.SharedDateUtils
+import com.fiap.hackthon.healthmed.user.UserConfiguration
 import jakarta.annotation.PostConstruct
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
@@ -11,7 +12,7 @@ import java.util.TimeZone
 
 
 @Configuration
-class AppConfig {
+class AppConfiguration {
 
     @PostConstruct
     fun init() {
@@ -21,8 +22,9 @@ class AppConfig {
 
 @ComponentScan(basePackageClasses = [
     AppRun::class,
-    SharedConfig::class,
-    DoctorConfig::class,
-    PatientConfig::class,
+    SharedConfiguration::class,
+    DoctorConfiguration::class,
+    PatientConfiguration::class,
+    UserConfiguration::class,
 ])
 annotation class EnableHealthMed

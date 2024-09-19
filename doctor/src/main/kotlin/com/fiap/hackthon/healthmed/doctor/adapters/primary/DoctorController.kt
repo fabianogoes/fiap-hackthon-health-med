@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping
 import java.util.UUID
 
 @RestController
-@RequestMapping("/doctors")
+@RequestMapping("/api/doctors")
 class DoctorController(
     private val doctorCreationPort: DoctorCreationPort,
     private val doctorReadingPort: DoctorReadingPort,

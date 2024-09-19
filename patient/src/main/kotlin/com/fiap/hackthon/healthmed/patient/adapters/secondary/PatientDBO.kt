@@ -3,6 +3,7 @@ package com.fiap.hackthon.healthmed.patient.adapters.secondary
 import com.fiap.hackthon.healthmed.patient.domain.entity.Patient
 import com.fiap.hackthon.healthmed.shared.CPF
 import com.fiap.hackthon.healthmed.shared.Email
+import com.fiap.hackthon.healthmed.user.domain.entity.User
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.Id
@@ -22,11 +23,12 @@ data class PatientDBO(
     @Column(unique = true)
     val email: String,
 ) {
-    fun toEntity(): Patient = Patient(
+    fun toEntity(user: User): Patient = Patient(
         id = id,
         name = name,
         cpf = CPF(cpf),
         email = Email(email),
+        user = user,
     )
 }
 
