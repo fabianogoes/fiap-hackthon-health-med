@@ -19,9 +19,9 @@ class DoctorUpdateUseCase(
         log.info("Updating Doctor id: $id, name: $name and email: $email")
 
         return doctorPersistencePort
-            .readOne(id)
+            .readOneById(id)
             ?.let { doctorPersistencePort.update(it.copy(name = name, email = Email(email))) }
-            ?: throw DoctorNotFoundException(id)
+            ?: throw DoctorNotFoundException(id.toString())
     }
 
 }

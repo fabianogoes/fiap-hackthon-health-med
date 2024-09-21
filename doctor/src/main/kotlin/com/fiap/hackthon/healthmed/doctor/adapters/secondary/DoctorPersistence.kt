@@ -24,9 +24,14 @@ class DoctorPostgresPersistence(
             .findAll()
             .map { it.toEntityWithUser() }
 
-    override fun readOne(id: UUID): Doctor? =
+    override fun readOneById(id: UUID): Doctor? =
         doctorRepository
             .findByIdOrNull(id)
+            ?.toEntityWithUser()
+
+    override fun readOneByEmail(email: Email): Doctor? =
+        doctorRepository
+            .findByEmail(email.value)
             ?.toEntityWithUser()
 
     override fun update(doctor: Doctor): Doctor =

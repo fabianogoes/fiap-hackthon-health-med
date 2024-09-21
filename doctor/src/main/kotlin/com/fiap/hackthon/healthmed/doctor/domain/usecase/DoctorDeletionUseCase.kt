@@ -17,9 +17,9 @@ class DoctorDeletionUseCase(
         log.info("Deleting Doctor id: $id")
 
         return doctorPersistencePort
-            .readOne(id)
+            .readOneById(id)
             ?.let { doctorPersistencePort.delete(id) }
-            ?: throw DoctorNotFoundException(id)
+            ?: throw DoctorNotFoundException(id.toString())
     }
 
 }
