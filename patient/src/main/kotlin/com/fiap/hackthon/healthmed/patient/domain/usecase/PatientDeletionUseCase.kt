@@ -17,9 +17,9 @@ class PatientDeletionUseCase(
         log.info("Deleting Patient id: $id")
 
         return patientPersistencePort
-            .readOne(id)
+            .readOneById(id)
             ?.let { patientPersistencePort.delete(id) }
-            ?: throw PatientNotFoundException(id)
+            ?: throw PatientNotFoundException(id.toString())
     }
 
 }

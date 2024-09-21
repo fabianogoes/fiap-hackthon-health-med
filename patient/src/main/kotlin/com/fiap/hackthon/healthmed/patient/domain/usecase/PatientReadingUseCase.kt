@@ -24,7 +24,7 @@ class PatientReadingUseCase(
         log.info("Read patient with id: $id")
 
         return patientPersistencePort
-            .readOne(id)
-            ?: throw PatientNotFoundException(id)
+            .readOneById(id)
+            ?: throw PatientNotFoundException(id.toString())
     }
 }
