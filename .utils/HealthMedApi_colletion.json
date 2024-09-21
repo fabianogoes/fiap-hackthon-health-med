@@ -1,1 +1,1000 @@
-{"_type":"export","__export_format":4,"__export_date":"2024-09-17T04:01:22.500Z","__export_source":"insomnia.desktop.app:v2023.5.8","resources":[{"_id":"req_ce85771953214a13a266e73608ac5602","parentId":"fld_bcbe20c181e143888efd9330f49991a0","modified":1726545542103,"created":1726542007263,"url":"http://localhost:8080/doctors/3b537ab4-da6e-4061-b02b-4c2453a01d4","name":"Doctor Reading by ID","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"User-Agent","value":"insomnia/2023.5.8"}],"authentication":{},"metaSortKey":-1726542007263,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_bcbe20c181e143888efd9330f49991a0","parentId":"wrk_36991c0c3e534aad96f008bb0d1cc7a8","modified":1726541066090,"created":1726541066090,"name":"doctor","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1726541066090,"_type":"request_group"},{"_id":"wrk_36991c0c3e534aad96f008bb0d1cc7a8","parentId":null,"modified":1726541055558,"created":1726541055558,"name":"Health & Med","description":"","scope":"collection","_type":"workspace"},{"_id":"req_c514aebbac4a4069a3ef1c2f76fc6963","parentId":"fld_bcbe20c181e143888efd9330f49991a0","modified":1726545558396,"created":1726542036427,"url":"http://localhost:8080/doctors","name":"Doctor Reading All","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"User-Agent","value":"insomnia/2023.5.8"}],"authentication":{},"metaSortKey":-1726541538358,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_1c17ab00bc4d4d5a800a39dc1021f9b9","parentId":"fld_bcbe20c181e143888efd9330f49991a0","modified":1726545565317,"created":1726541069453,"url":"http://localhost:8080/doctors","name":"Doctor Creation","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"Davi\",\n\t\"cpf\": \"12345678901\",\n\t\"email\": \"davi@gmail.com\",\n\t\"crm\": \"12345/SP\",\n\t\"password\": \"123456\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json"},{"name":"User-Agent","value":"insomnia/2023.5.8"}],"authentication":{},"metaSortKey":-1726541069453,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_c09e4f50b94e47ca9acb053b83d0d8e9","parentId":"fld_bcbe20c181e143888efd9330f49991a0","modified":1726545571084,"created":1726543957716,"url":"http://localhost:8080/doctors/c945cffc-6998-4546-9e60-8f5213a0e4e","name":"Doctor Update","description":"","method":"PUT","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"Davi Góes\",\n\t\"email\": \"davi@gmail.com\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json"},{"name":"User-Agent","value":"insomnia/2023.5.8"}],"authentication":{},"metaSortKey":-1726180848096.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_7722767ff6394b50ac79537007ce247c","parentId":"fld_bcbe20c181e143888efd9330f49991a0","modified":1726545612763,"created":1726544600791,"url":"http://localhost:8080/doctors/4ff864a4-f023-4873-8e28-ec488faac508","name":"Doctor Deletion","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"name":"User-Agent","value":"insomnia/2023.5.8"}],"authentication":{},"metaSortKey":-1726000737418.25,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"env_6d8bdbd6617aee27666b632f7169e8556e910aa8","parentId":"wrk_36991c0c3e534aad96f008bb0d1cc7a8","modified":1726541055563,"created":1726541055563,"name":"Base Environment","data":{},"dataPropertyOrder":null,"color":null,"isPrivate":false,"metaSortKey":1726541055563,"_type":"environment"},{"_id":"jar_6d8bdbd6617aee27666b632f7169e8556e910aa8","parentId":"wrk_36991c0c3e534aad96f008bb0d1cc7a8","modified":1726541055565,"created":1726541055565,"name":"Default Jar","cookies":[],"_type":"cookie_jar"}]}
+_type: export
+__export_format: 4
+__export_date: 2024-09-21T00:03:48.243Z
+__export_source: insomnia.desktop.app:v10.0.0
+resources:
+  - _id: req_b01afc340dfb4e038e459ba8b3753fef
+    parentId: wrk_39f44fe0120e48b687c62bef1fc3ddc4
+    modified: 1726704511539
+    created: 1726601604794
+    url: http://localhost:8080/health
+    name: Health
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+    authentication:
+      type: none
+    metaSortKey: -1726601604794
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: wrk_39f44fe0120e48b687c62bef1fc3ddc4
+    parentId: null
+    modified: 1726601584577
+    created: 1726601584577
+    name: Health & Med
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_4f851bc507994fdc853b165ec93c7068
+    parentId: wrk_39f44fe0120e48b687c62bef1fc3ddc4
+    modified: 1726702520381
+    created: 1726601637423
+    url: http://localhost:8080/properties
+    name: Properties
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+    authentication:
+      type: bearer
+      token: "{{ _.autorizationToken }}"
+    metaSortKey: -1726571806028.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0567ceb177624cbeb46bbc0a7b9dc334
+    parentId: wrk_39f44fe0120e48b687c62bef1fc3ddc4
+    modified: 1726684310564
+    created: 1726601665604
+    url: http://localhost:8080/db
+    name: DB Info
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+    authentication:
+      type: bearer
+      token: "{{ _.autorizationToken }}"
+    metaSortKey: -1726556906645.75
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_8d08518e15f44e39bc06f3fbc9bc9f99
+    parentId: fld_0896e59b6336404d9a388273cc5d841f
+    modified: 1726706993936
+    created: 1726680474584
+    url: http://localhost:8080/api/auth
+    name: Generate Token
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "admin@gmail.com",
+        	"password": "adm"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/9.3.3
+    authentication: {}
+    metaSortKey: -1726680474584
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_0896e59b6336404d9a388273cc5d841f
+    parentId: wrk_39f44fe0120e48b687c62bef1fc3ddc4
+    modified: 1726680466269
+    created: 1726680449991
+    name: Auth
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1726555916611.0156
+    _type: request_group
+  - _id: req_24065d752db545d488989a078b9a541a
+    parentId: fld_0896e59b6336404d9a388273cc5d841f
+    modified: 1726682977597
+    created: 1726682874781
+    url: http://localhost:8080/api/auth/refresh
+    name: Refresh Token
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/9.3.3
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
+      prefix: Bearer
+    metaSortKey: -1726680403083.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5c346d88caa04595b86682d6b041f9cf
+    parentId: fld_93164b51161842df8af5f9a90fba1705
+    modified: 1726704595830
+    created: 1726680331583
+    url: http://localhost:8080/api/users
+    name: Read all Users
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_51518d17bd684627abdb56320a23e0db
+    authentication:
+      type: bearer
+      token: "{{ _.autorizationToken }}"
+      prefix: Bearer
+    metaSortKey: -1726680331583
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_93164b51161842df8af5f9a90fba1705
+    parentId: wrk_39f44fe0120e48b687c62bef1fc3ddc4
+    modified: 1726680454065
+    created: 1726680304609
+    name: Users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1726554926576.2812
+    _type: request_group
+  - _id: req_87d1ea3a851644d18cfd0563e9adf0d3
+    parentId: fld_93164b51161842df8af5f9a90fba1705
+    modified: 1726684718478
+    created: 1726682812755
+    url: http://localhost:8080/api/users/email/admin@gmail.com
+    name: Read User by Email
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_51518d17bd684627abdb56320a23e0db
+    authentication:
+      type: bearer
+      token: "{{ _.autorizationToken }}"
+      prefix: Bearer
+    metaSortKey: -1726631242136.125
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_12a5803c68584a1aa86eb0189ff76f5a
+    parentId: fld_93164b51161842df8af5f9a90fba1705
+    modified: 1726704459624
+    created: 1726682564250
+    url: http://localhost:8080/api/users
+    name: Create User
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "admin@gmail.com",
+        	"password": "adm"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_51518d17bd684627abdb56320a23e0db
+    authentication:
+      type: none
+    metaSortKey: -1726621424246.75
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_6f07b22e4abf4b74a3cf9c7eeb553045
+    parentId: fld_93164b51161842df8af5f9a90fba1705
+    modified: 1726684732903
+    created: 1726682658863
+    url: http://localhost:8080/api/users/38e02d50-3f98-4f69-a35b-556f3e6964bc
+    name: Delete User by ID
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/9.3.3
+        id: pair_51518d17bd684627abdb56320a23e0db
+    authentication:
+      type: bearer
+      token: "{{ _.autorizationToken }}"
+      prefix: Bearer
+    metaSortKey: -1726611606357.375
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_54339d0c22f24dba8fd8d85e72ee46b2
+    parentId: fld_71cd8e2e9dbd43afbcd4b6db105687c6
+    modified: 1726768285927
+    created: 1726542036427
+    url: http://localhost:8080/api/doctors
+    name: Doctor Reading All
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_1546fda8373d4e15beafdbafb37d9486
+      - id: pair_7cba0337508d473f8542d6e4bf187918
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1726542007363
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_71cd8e2e9dbd43afbcd4b6db105687c6
+    parentId: wrk_39f44fe0120e48b687c62bef1fc3ddc4
+    modified: 1726768899523
+    created: 1726541066090
+    name: Doctors
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1726554431558.914
+    _type: request_group
+  - _id: req_b3b01394e7dd4adc9fe6d96e6b13ccae
+    parentId: fld_71cd8e2e9dbd43afbcd4b6db105687c6
+    modified: 1726705509279
+    created: 1726542007263
+    url: http://localhost:8080/api/doctors/8feffa56-9585-4366-9735-eee716f591d1
+    name: Doctor Reading by ID
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_d9eb551613604ffba268b1737c789937
+      - id: pair_01a8388c1a3f494dad5f4ce96ca5385f
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1726542007263
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b029ea042bc44c92b27c55c767b64e41
+    parentId: fld_71cd8e2e9dbd43afbcd4b6db105687c6
+    modified: 1726684147922
+    created: 1726541069453
+    url: http://localhost:8080/api/doctors
+    name: Doctor Creation
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Doctor Who",
+        	"cpf": "12345678901",
+        	"email": "doctorwho@gmail.com",
+        	"crm": "12345/SP",
+        	"password": "123456"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_57389f90e3d14d0ea8f2a1081955535b
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_d59fa27ad4f84e9ba53ac9c34e85a35b
+      - id: pair_f81c45860e7141049bfe9f0ead0d3338
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1726541069453
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b474b1df131f40f1a887aabebe78504e
+    parentId: fld_71cd8e2e9dbd43afbcd4b6db105687c6
+    modified: 1726684157320
+    created: 1726543957716
+    url: http://localhost:8080/api/doctors/c945cffc-6998-4546-9e60-8f5213a0e4e
+    name: Doctor Update
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Davi Góes",
+        	"email": "davi@gmail.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_56344b3109d44765830fd24f024fe2dd
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_0d1400df34f041af91d3b1042c930369
+      - id: pair_c210100e42f24c8ebda20bab76806fc2
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication: {}
+    metaSortKey: -1726180848096.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e639482c3b754b0ab83595001280d447
+    parentId: fld_71cd8e2e9dbd43afbcd4b6db105687c6
+    modified: 1726705488030
+    created: 1726544600791
+    url: http://localhost:8080/api/doctors/c9c8e387-1b51-4bd3-b300-f04ee151f520
+    name: Doctor Deletion
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+    authentication:
+      type: bearer
+      token: "{{ _.autorizationToken }}"
+    metaSortKey: -1726000737418.25
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_25e5beac042c48618f301e1d5558fdf1
+    parentId: fld_7df5f28aeca94806a0c9cf31e71a91a9
+    modified: 1726684247896
+    created: 1726601785086
+    url: http://localhost:8080/api/patients
+    name: Patient Reading All
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+    authentication:
+      type: bearer
+      token: "{{ _.autorizationToken }}"
+    metaSortKey: -1726601788468
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_7df5f28aeca94806a0c9cf31e71a91a9
+    parentId: wrk_39f44fe0120e48b687c62bef1fc3ddc4
+    modified: 1726768902525
+    created: 1726601746024
+    name: Patients
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1726554184050.2305
+    _type: request_group
+  - _id: req_2e8b04c5d6484ab0bc1424f88aad8e74
+    parentId: fld_7df5f28aeca94806a0c9cf31e71a91a9
+    modified: 1726707284109
+    created: 1726601809258
+    url: http://localhost:8080/api/patients/680d2574-df99-4093-ae2f-65d63cb73686
+    name: Patient Reading by ID
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+    authentication:
+      type: bearer
+      token: "{{ _.autorizationToken }}"
+    metaSortKey: -1726601788368
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_886313d3be634dea9c01c1d7b8f5d09c
+    parentId: fld_7df5f28aeca94806a0c9cf31e71a91a9
+    modified: 1726684264050
+    created: 1726601861115
+    url: http://localhost:8080/api/patients
+    name: Patient Creation
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "John",
+        	"cpf": "09876543211",
+        	"email": "john@gmail.com",
+        	"password": "111111"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/2023.5.8
+    authentication:
+      type: bearer
+      token: "{{ _.autorizationToken }}"
+    metaSortKey: -1726601788268
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0a090281e8124b0b9d820a212d3c546d
+    parentId: fld_7df5f28aeca94806a0c9cf31e71a91a9
+    modified: 1726684275627
+    created: 1726601927528
+    url: http://localhost:8080/api/patients/db6c1dba-160f-43d1-8e85-e8f102154e00
+    name: Patient Update
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "John Foo",
+        	"email": "johnfoo@gmail.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/2023.5.8
+    authentication:
+      type: bearer
+      token: "{{ _.autorizationToken }}"
+    metaSortKey: -1726601788168
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_08242238d7824952b451ef345ef1e1de
+    parentId: fld_7df5f28aeca94806a0c9cf31e71a91a9
+    modified: 1726684283651
+    created: 1726601988216
+    url: http://localhost:8080/api/patients/db6c1dba-160f-43d1-8e85-e8f102154e00
+    name: Patient Deletion
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+    authentication:
+      type: bearer
+      token: "{{ _.autorizationToken }}"
+    metaSortKey: -1726601788068
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ea1633b5feef49009ee77cc45b996bf6
+    parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
+    modified: 1726768996073
+    created: 1726768920219
+    url: http://localhost:8080/api/schedules
+    name: Reading All Schedule
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_1546fda8373d4e15beafdbafb37d9486
+      - id: pair_7cba0337508d473f8542d6e4bf187918
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1726768928488
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_9b3d26b1ed6d448b9f14f700343ebd26
+    parentId: wrk_39f44fe0120e48b687c62bef1fc3ddc4
+    modified: 1726768897782
+    created: 1726768888113
+    name: Schedules
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1726553936541.5469
+    _type: request_group
+  - _id: req_c3850b3366d8447cb4d68d19e75e7cda
+    parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
+    modified: 1726769021338
+    created: 1726768964507
+    url: http://localhost:8080/api/schedules/doctor/doctorwho@gmail.com
+    name: Reading All Schedule by Doctor
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_1546fda8373d4e15beafdbafb37d9486
+      - id: pair_7cba0337508d473f8542d6e4bf187918
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1726724701536
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_faca4eba921a4bc7919302cbb809beb6
+    parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
+    modified: 1726771028916
+    created: 1726771019713
+    url: http://localhost:8080/api/schedules/doctor/doctorwho@gmail.com/available
+    name: Reading All Available by Doctor
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_1546fda8373d4e15beafdbafb37d9486
+      - id: pair_7cba0337508d473f8542d6e4bf187918
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1726713644798
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_4b35b0f39e524524b4a9aefa5f382196
+    parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
+    modified: 1726771104450
+    created: 1726771099987
+    url: http://localhost:8080/api/schedules/doctor/doctorwho@gmail.com/reserved
+    name: Reading All Reserved by Doctor
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_1546fda8373d4e15beafdbafb37d9486
+      - id: pair_7cba0337508d473f8542d6e4bf187918
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1726708116429
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b20005379ddb4569833d184eb18688bd
+    parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
+    modified: 1726769052188
+    created: 1726769033425
+    url: http://localhost:8080/api/schedules/patient/john@gmail.com
+    name: Reading All Schedule by Patient
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_1546fda8373d4e15beafdbafb37d9486
+      - id: pair_7cba0337508d473f8542d6e4bf187918
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1726702588060
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_95fb8610fe534af08548e34fb8f80522
+    parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
+    modified: 1726769098977
+    created: 1726769076892
+    url: http://localhost:8080/api/schedules/8feffa56-9585-4366-9735-eee716f591d1
+    name: Reading One Schedule by ID
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_1546fda8373d4e15beafdbafb37d9486
+      - id: pair_7cba0337508d473f8542d6e4bf187918
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1726691531322
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1fed9c33b7164dbe831cbe299fd631c5
+    parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
+    modified: 1726769368563
+    created: 1726769156313
+    url: http://localhost:8080/api/schedules
+    name: Creation Schedule
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"doctorEmail": "doctorwho@gmail.com",
+        	"date": "2024-09-20",
+        	"startTime": "13:00",
+        	"endTime": "14:00"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_1546fda8373d4e15beafdbafb37d9486
+      - id: pair_7cba0337508d473f8542d6e4bf187918
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1726686002953
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7eb89b5efcfb4f38a5ff552471331e6c
+    parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
+    modified: 1726771962798
+    created: 1726771907704
+    url: http://localhost:8080/api/schedules/7d1c46e4-2511-47f9-8bfe-b1f0b08e75fb/reservation/patient/john@gmail.com
+    name: Reservation Schedule
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"doctorEmail": "doctorwho@gmail.com",
+        	"date": "2024-09-20",
+        	"startTime": "13:00",
+        	"endTime": "14:00"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_1546fda8373d4e15beafdbafb37d9486
+      - id: pair_7cba0337508d473f8542d6e4bf187918
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1726684620860.75
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f0aea0bedd7349418c57476b1b881d35
+    parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
+    modified: 1726769371927
+    created: 1726769315780
+    url: http://localhost:8080/api/schedules/c20c5da9-9ae3-484b-885d-a97764c84ea2
+    name: Cancellation Schedule
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+        id: pair_1546fda8373d4e15beafdbafb37d9486
+      - id: pair_7cba0337508d473f8542d6e4bf187918
+        name: Authorization
+        value: Bearer {{ _.autorizationToken }}
+        description: ""
+        disabled: false
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
+      prefix: Bearer
+      disabled: true
+    metaSortKey: -1726683238768.5
+    isPrivate: false
+    pathParameters: []
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_358c8038928f482f99f2bf822391d567
+    parentId: wrk_39f44fe0120e48b687c62bef1fc3ddc4
+    modified: 1726684056471
+    created: 1726541055563
+    name: Base Environment
+    data:
+      autorizationToken: "{% response 'body', 'req_8d08518e15f44e39bc06f3fbc9bc9f99',
+        'b64::JC5hY2Nlc3NUb2tlbg==::46b', 'when-expired', 60 %}"
+    dataPropertyOrder:
+      "&":
+        - autorizationToken
+    color: null
+    isPrivate: false
+    metaSortKey: 1726541055563
+    _type: environment
+  - _id: jar_47dc9059102949a9858190ba7a16c08a
+    parentId: wrk_39f44fe0120e48b687c62bef1fc3ddc4
+    modified: 1726662760831
+    created: 1726541055565
+    name: Default Jar
+    cookies:
+      - key: JSESSIONID
+        value: 7370A7EA7293DC71F56270D267A2D364
+        domain: localhost
+        path: /
+        httpOnly: true
+        hostOnly: true
+        creation: 2024-09-18T12:32:40.831Z
+        lastAccessed: 2024-09-18T12:32:40.831Z
+        id: c8db316e-67fd-4ff8-9247-3a1f99bcff97
+    _type: cookie_jar
