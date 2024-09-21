@@ -14,5 +14,6 @@ data class ScheduleState(
         RECEIVED,
         ANSWERED,
         CANCELLED,
+        MAIL_ERROR,
     }
 }

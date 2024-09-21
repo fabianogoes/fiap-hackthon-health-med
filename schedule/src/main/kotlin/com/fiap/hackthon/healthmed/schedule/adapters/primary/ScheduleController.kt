@@ -72,11 +72,10 @@ class ScheduleController(
             .toDTO()
 
     @PostMapping("/{id}/reservation/patient/{patientEmail}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    fun reservation(@PathVariable id: UUID, @PathVariable patientEmail: String): ScheduleResponse =
-        scheduleReservationPort
-            .reserve(id, Email(patientEmail))
-            .toDTO()
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun reservation(@PathVariable id: UUID, @PathVariable patientEmail: String) {
+        scheduleReservationPort.reserve(id, Email(patientEmail))
+    }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

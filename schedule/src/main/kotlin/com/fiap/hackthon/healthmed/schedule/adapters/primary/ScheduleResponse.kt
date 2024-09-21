@@ -17,10 +17,10 @@ data class ScheduleResponse(
 
 fun Schedule.toDTO() = ScheduleResponse(
     id = this.id,
-    date = this.date,
-    startTime = this.startTime,
-    endTime = this.endTime,
-    doctorEmail = this.doctorEmail.value,
+    doctorEmail = this.slot.doctorEmail.value,
+    date = this.slot.date,
+    startTime = this.slot.startTime,
+    endTime = this.slot.endTime,
     currentState = this.currentState.state.name,
     states = this.states.map { it.state.name },
 )

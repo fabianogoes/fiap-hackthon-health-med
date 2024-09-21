@@ -47,6 +47,19 @@ O objetivo do **Hackathon** é a entrega de um produto de MVP desenvolvido e que
 
 ## Importante 
 
+### Chave para geração do JWT
+
 Para gerar uma chave de JWT que é uma variável de ambiente necessária para rodar a aplicação,
 é preciso que essa chave seja criada usando `HMAC-SHA algorithm`, 
 use um [gerador on-line](https://www.freeformatter.com/hmac-generator.html#before-output) para gerar uma nova sempre que precisar.
+
+### Envio de Email
+
+Para funcionar o envio de email é preciso configurar as seguintes variáveis de ambiente:
+
+- `MAIL_HOST`: exemplo `smtp.gmail.com`
+- `MAIL_PORT`: exemplo `587`
+- `MAIL_USERNAME`: exemplo `schedule@gmail.com`
+- `MAIL_PASSWORD`
+- `MAIL_SMTP_AUTH`: exemplo `true`
+- `MAIL_SMTP_STARTTLS`: exemplo `true`

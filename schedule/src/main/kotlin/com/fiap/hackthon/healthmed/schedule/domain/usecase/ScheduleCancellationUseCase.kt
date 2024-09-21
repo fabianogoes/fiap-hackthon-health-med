@@ -1,5 +1,6 @@
 package com.fiap.hackthon.healthmed.schedule.domain.usecase
 
+import com.fiap.hackthon.healthmed.schedule.domain.exception.ScheduleNotFoundException
 import com.fiap.hackthon.healthmed.schedule.ports.ScheduleCancellationPort
 import com.fiap.hackthon.healthmed.schedule.ports.SchedulePersistencePort
 import jakarta.inject.Named
@@ -14,7 +15,7 @@ class ScheduleCancellationUseCase(
         schedulePersistencePort
             .readById(id)
             ?.let { schedulePersistencePort.delete(id) }
-            ?: throw RuntimeException("Schedule id $id not found")
+            ?: throw ScheduleNotFoundException(id.toString())
 
         // TODO send email
     }
