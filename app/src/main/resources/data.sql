@@ -1,0 +1,4 @@
+insert into doctors(id, cpf, crm, email, name) values('45df1f24-63d4-432f-bc15-953babd09d12', '1112223333344', '12345/SP', 'admin@gmail.com', 'Admin') on conflict do nothing;
+insert into patients(id, cpf, email, name) values('680d2574-df99-4093-ae2f-65d63cb73686', '09876543211', 'john@gmail.com', 'JohnJohn') on conflict do nothing;
+insert into users(email, password, role) values ('admin@gmail.com', '$2a$10$QMqfyCLBbmp3Hhh96BnXCOQWSmFUSFit//WeAWFo6STtRjdCRdJFy', 'ADMIN_ROLE') on conflict do nothing;
+insert into users(email, password, role) values ('john@gmail.com', '$2a$10$QMqfyCLBbmp3Hhh96BnXCOQWSmFUSFit//WeAWFo6STtRjdCRdJFy', 'ADMIN_ROLE') on conflict do nothing;

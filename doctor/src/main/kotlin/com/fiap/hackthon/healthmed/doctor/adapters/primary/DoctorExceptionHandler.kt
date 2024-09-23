@@ -1,5 +1,6 @@
 package com.fiap.hackthon.healthmed.doctor.adapters.primary
 
+import com.fiap.hackthon.healthmed.doctor.domain.exception.DoctorEmailAlreadyExistsException
 import com.fiap.hackthon.healthmed.doctor.domain.exception.DoctorNotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -19,6 +20,17 @@ class DoctorExceptionHandler {
         )
 
         return ResponseEntity(errorResponse, HttpStatus.NOT_FOUND)
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(DoctorEmailAlreadyExistsException::class)
+    fun doctorAlreadyExistsException(ex: DoctorEmailAlreadyExistsException): ResponseEntity<ErrorResponse> {
+        val errorResponse = ErrorResponse(
+            status = HttpStatus.BAD_REQUEST.value(),
+            message = ex.message ?: "Doctor already exists",
+        )
+
+        return ResponseEntity(errorResponse, HttpStatus.BAD_REQUEST)
     }
 
     data class ErrorResponse(
