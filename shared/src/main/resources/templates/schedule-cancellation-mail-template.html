@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<p th:text="'Olá, Dr. ' + ${doctor_name} + '!'" />
+<p>Sua consulta marcada com o paciente: <span th:text="${patient_name}"></span>.</p>
+<p>Data e horário: <span th:text="${schedule_date}"></span> às <span th:text="${schedule_time}"></span>.</p>
+<p>Foi CANCELADA!</p>
+</body>
+</html>

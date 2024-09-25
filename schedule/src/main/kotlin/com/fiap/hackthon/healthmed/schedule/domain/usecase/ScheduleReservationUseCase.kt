@@ -46,7 +46,6 @@ open class ScheduleReservationUseCase(
 
         schedulePersistencePort
             .save(schedule.copy(patientEmail = patientEmail).reserved())
-            .also { log.info("sending email to $it") }
             .also { sendMail(schedule, doctor, patient) }
     }
 
@@ -56,6 +55,8 @@ open class ScheduleReservationUseCase(
         patient: Patient,
     ) {
         kotlin.runCatching {
+            log.info("sending email to doctor {} for reservation schedule {} to patient {}", doctor.email, schedule, patient.email)
+
             val messageVars = mapOf(
                 MAIL_SCHEDULE_DOCTOR_VARIABLE_NAME to doctor.name,
                 MAIL_SCHEDULE_PATIENT_VARIABLE_NAME to patient.name,

@@ -6,6 +6,8 @@ import com.fiap.hackthon.healthmed.schedule.ports.ScheduleReadingPort
 import com.fiap.hackthon.healthmed.schedule.ports.ScheduleReservationPort
 import com.fiap.hackthon.healthmed.shared.Email
 import org.springframework.http.HttpStatus
+import org.springframework.security.core.annotation.AuthenticationPrincipal
+import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RequestMapping
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.DeleteMapping
+import org.springframework.web.bind.annotation.RequestParam
 import java.util.UUID
 
 @RestController
@@ -71,10 +74,10 @@ class ScheduleController(
             .readById(id)
             .toDTO()
 
-    @PostMapping("/{id}/reservation/patient/{patientEmail}")
+    @PostMapping("/{id}/reservation")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun reservation(@PathVariable id: UUID, @PathVariable patientEmail: String) {
-        scheduleReservationPort.reserve(id, Email(patientEmail))
+    fun reservation(@PathVariable id: UUID, @AuthenticationPrincipal user: UserDetails) {
+        scheduleReservationPort.reserve(id, Email(user.username))
     }
 
     @DeleteMapping("/{id}")

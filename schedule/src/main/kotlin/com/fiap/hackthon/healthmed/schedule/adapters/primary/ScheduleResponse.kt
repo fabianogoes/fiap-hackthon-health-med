@@ -11,6 +11,7 @@ data class ScheduleResponse(
     val startTime: LocalTime,
     val endTime: LocalTime,
     val doctorEmail: String,
+    val patientEmail: String,
     val currentState: String,
     val states: List<String>,
 )
@@ -18,6 +19,7 @@ data class ScheduleResponse(
 fun Schedule.toDTO() = ScheduleResponse(
     id = this.id,
     doctorEmail = this.slot.doctorEmail.value,
+    patientEmail = this.patientEmail!!.value,
     date = this.slot.date,
     startTime = this.slot.startTime,
     endTime = this.slot.endTime,
