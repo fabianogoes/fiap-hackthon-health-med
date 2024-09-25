@@ -11,6 +11,7 @@ import jakarta.persistence.CascadeType
 import jakarta.persistence.FetchType
 import jakarta.persistence.OneToMany
 import jakarta.persistence.OrderBy
+import jakarta.persistence.Version
 import java.time.LocalDate
 import java.time.LocalTime
 import java.util.UUID
@@ -46,6 +47,9 @@ data class ScheduleDBO(
     )
     @OrderBy(value = "createdAt ASC")
     val states: MutableList<ScheduleStateDBO> = mutableListOf(),
+
+    @Version
+    val version: Int,
 ) {
 
     fun toModel() = Schedule(
@@ -58,6 +62,7 @@ data class ScheduleDBO(
         ),
         patientEmail = patientEmail?.let { Email(it) },
         states = states.map { it.toModel() }.toMutableList(),
+        version = version,
     )
 }
 
@@ -69,6 +74,7 @@ fun Schedule.toDBO() = ScheduleDBO(
     doctorEmail = slot.doctorEmail.value,
     patientEmail = patientEmail?.value,
     currentState = currentState.state.name,
+    version = version,
 ).let { dbo ->
     states.map { dbo.states.add(it.toDBO(dbo)) }.toMutableList()
     dbo
