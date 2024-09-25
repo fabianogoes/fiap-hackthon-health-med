@@ -8,17 +8,18 @@ O objetivo do **Hackathon** é a entrega de um produto de MVP desenvolvido e que
 
 ## Stack
 
-- Kotlin
-- Spring Boot
-- Spring Data / JPA
-- Spring Security
-- Spring Mail
-- JWT
-- PostgreSQL
-- Docker / Docker Compose
-- GitHub Actions
-- MockK
-- Kotlin Faker
+- [x] [Kotlin](https://kotlinlang.org/) `1.9.24`
+- [x] [Spring Boot](https://spring.io/projects/spring-boot) `3.3.2`
+- [x] [Spring Data](https://spring.io/projects/spring-data) / [JPA](https://jakarta.ee/specifications/persistence/2.2/apidocs/)
+- [x] [Spring Security](https://spring.io/projects/spring-security)
+- [x] [Spring Mail](https://docs.spring.io/spring-framework/reference/integration/email.html)
+- [x] [JWT](https://jwt.io/)
+- [x] [PostgreSQL](https://www.postgresql.org/docs/12/index.html) `12`
+- [x] [Docker](https://docs.docker.com/get-started/get-docker/) / [Docker Compose](https://docs.docker.com/compose/)
+- [x] [GitHub Actions CI/CD](https://docs.github.com/pt/actions)
+- [x] [MockK](https://mockk.io/)
+- [x] [Kotlin Faker](https://serpro69.github.io/kotlin-faker/)
+- [ ] [Kluent](https://markusamshove.github.io/Kluent/)
 
 ## Módulos
 
