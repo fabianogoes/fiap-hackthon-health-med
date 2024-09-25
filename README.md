@@ -43,10 +43,11 @@ O objetivo do **Hackathon** é a entrega de um produto de MVP desenvolvido e que
 
 ## Motivações
 
-- [Monolith First](https://martinfowler.com/bliki/MonolithFirst.html)
-- [Modularity Patterns](https://martinfowler.com/articles/refactoring-dependencies.html)
-- [Hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/)
-- [The Dependency Inversion Principle (DIP)](https://martinfowler.com/articles/dipInTheWild.html)
+- [Monolith First](https://martinfowler.com/bliki/MonolithFirst.html) `design`
+- [Modularity Patterns](https://martinfowler.com/articles/refactoring-dependencies.html) `design`
+- [Hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/) `pattern`
+- [The Dependency Inversion Principle (DIP)](https://martinfowler.com/articles/dipInTheWild.html) `pattern`
+- [Optimistic Locking in JPA](https://www.baeldung.com/jpa-optimistic-locking)  `concurrency`
 
 
 ## Importante 
