@@ -63,7 +63,7 @@ Para funcionar o envio de email é preciso configurar as seguintes variáveis de
 - `MAIL_HOST`: exemplo `smtp.gmail.com`
 - `MAIL_PORT`: exemplo `587`
 - `MAIL_USERNAME`: exemplo `schedule@gmail.com`
-- `MAIL_PASSWORD`
+- `MAIL_PASSWORD`: exemplo `your email password`
 - `MAIL_SMTP_AUTH`: exemplo `true`
 - `MAIL_SMTP_STARTTLS`: exemplo `true`
 
