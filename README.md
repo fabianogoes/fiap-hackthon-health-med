@@ -12,10 +12,13 @@ O objetivo do **Hackathon** é a entrega de um produto de MVP desenvolvido e que
 - Spring Boot
 - Spring Data / JPA
 - Spring Security
+- Spring Mail
 - JWT
 - PostgreSQL
 - Docker / Docker Compose
 - GitHub Actions
+- MockK
+- Kotlin Faker
 
 ## Módulos
 
@@ -63,3 +66,13 @@ Para funcionar o envio de email é preciso configurar as seguintes variáveis de
 - `MAIL_PASSWORD`
 - `MAIL_SMTP_AUTH`: exemplo `true`
 - `MAIL_SMTP_STARTTLS`: exemplo `true`
+
+### Referências
+
+- [Building web applications with Spring Boot and Kotlin](https://spring.io/guides/tutorials/spring-boot-kotlin)
+- [MockK](https://mockk.io/)
+- [Guide to Spring Boot Testing with Kotlin](https://www.baeldung.com/kotlin/spring-boot-testing)
+- [Guide to Spring Email](https://www.baeldung.com/spring-email)
+- [Sending email in Spring with Thymeleaf](https://www.thymeleaf.org/doc/articles/springmail.html)
+- [Using ThymeLeaf and FreeMarker Emails Templates with Spring](https://www.baeldung.com/spring-email-templates)
+- [kotlin-faker](https://serpro69.github.io/kotlin-faker/)
