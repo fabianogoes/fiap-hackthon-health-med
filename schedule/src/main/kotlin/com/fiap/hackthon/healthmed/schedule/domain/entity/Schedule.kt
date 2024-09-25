@@ -13,6 +13,7 @@ data class Schedule(
     val currentState: ScheduleState
         get() = states.maxByOrNull { it.createdAt } ?: throw IllegalStateException("Unknown schedule state")
 
+    fun scheduled(): Schedule  = apply { addState(State.SCHEDULED) }
     fun reserved(): Schedule  = apply { addState(State.RESERVED) }
     fun received(): Schedule = apply { addState(State.RECEIVED) }
     fun answered(): Schedule = apply { addState(State.ANSWERED) }
@@ -26,7 +27,8 @@ data class Schedule(
     fun isCanceled() = currentState.state == State.CANCELLED
     fun isMailError() = currentState.state == State.MAIL_ERROR
 
-    fun canBeReserved() = states.none { it.state == State.RESERVED }
+    fun canBeReserved() = currentState.state == State.SCHEDULED
+    fun canBeCanceled() = currentState.state == State.RESERVED
 
     private fun addState(state: State): Schedule =
         apply { states.add(ScheduleState(state = state)) }

@@ -1,6 +1,7 @@
 package com.fiap.hackthon.healthmed.schedule.adapters.secondary
 
 import com.fiap.hackthon.healthmed.schedule.domain.entity.Schedule
+import com.fiap.hackthon.healthmed.schedule.domain.entity.Slot
 import com.fiap.hackthon.healthmed.schedule.ports.SchedulePersistencePort
 import com.fiap.hackthon.healthmed.shared.Email
 import org.springframework.data.repository.findByIdOrNull
@@ -40,4 +41,12 @@ class SchedulePostgresPersistence(
     override fun delete(id: UUID) {
         scheduleRepository.deleteById(id)
     }
+
+    override fun existsBySlot(slot: Slot): Boolean =
+        scheduleRepository.existsByDoctorEmailAndDateAndStartTimeAndEndTime(
+            doctorEmail = slot.doctorEmail.value,
+            date = slot.date,
+            startTime = slot.startTime,
+            endTime = slot.endTime,
+        )
 }
