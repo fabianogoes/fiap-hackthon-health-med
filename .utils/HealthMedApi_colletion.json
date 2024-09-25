@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2024-09-21T00:03:48.243Z
+__export_date: 2024-09-25T12:52:10.059Z
 __export_source: insomnia.desktop.app:v10.0.0
 resources:
   - _id: req_b01afc340dfb4e038e459ba8b3753fef
@@ -90,7 +90,7 @@ resources:
     _type: request
   - _id: req_8d08518e15f44e39bc06f3fbc9bc9f99
     parentId: fld_0896e59b6336404d9a388273cc5d841f
-    modified: 1726706993936
+    modified: 1727268505549
     created: 1726680474584
     url: http://localhost:8080/api/auth
     name: Generate Token
@@ -100,8 +100,8 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"email": "admin@gmail.com",
-        	"password": "adm"
+        	"email": "{{ _.patientEmail }}",
+        	"password": "{{ _.patientPassword }}"
         }
     parameters: []
     headers:
@@ -132,7 +132,7 @@ resources:
     _type: request_group
   - _id: req_24065d752db545d488989a078b9a541a
     parentId: fld_0896e59b6336404d9a388273cc5d841f
-    modified: 1726682977597
+    modified: 1727268696401
     created: 1726682874781
     url: http://localhost:8080/api/auth/refresh
     name: Refresh Token
@@ -140,9 +140,9 @@ resources:
     method: POST
     body:
       mimeType: application/json
-      text: >-
+      text: |-
         {
-        	"token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ"
+        	"token": "{{ _.autorizationToken }}"
         }
     parameters: []
     headers:
@@ -368,7 +368,7 @@ resources:
     _type: request
   - _id: req_b029ea042bc44c92b27c55c767b64e41
     parentId: fld_71cd8e2e9dbd43afbcd4b6db105687c6
-    modified: 1726684147922
+    modified: 1727268578787
     created: 1726541069453
     url: http://localhost:8080/api/doctors
     name: Doctor Creation
@@ -380,9 +380,9 @@ resources:
         {
         	"name": "Doctor Who",
         	"cpf": "12345678901",
-        	"email": "doctorwho@gmail.com",
+        	"email": "fabianogoes@gmail.com",
         	"crm": "12345/SP",
-        	"password": "123456"
+        	"password": "{{ _.doctorPassword }}"
         }
     parameters: []
     headers:
@@ -511,9 +511,9 @@ resources:
     _type: request_group
   - _id: req_2e8b04c5d6484ab0bc1424f88aad8e74
     parentId: fld_7df5f28aeca94806a0c9cf31e71a91a9
-    modified: 1726707284109
+    modified: 1727134128200
     created: 1726601809258
-    url: http://localhost:8080/api/patients/680d2574-df99-4093-ae2f-65d63cb73686
+    url: http://localhost:8080/api/patients/fa477a9b-c1e4-44c1-a558-25eb65e2ab63
     name: Patient Reading by ID
     description: ""
     method: GET
@@ -537,7 +537,7 @@ resources:
     _type: request
   - _id: req_886313d3be634dea9c01c1d7b8f5d09c
     parentId: fld_7df5f28aeca94806a0c9cf31e71a91a9
-    modified: 1726684264050
+    modified: 1727268527465
     created: 1726601861115
     url: http://localhost:8080/api/patients
     name: Patient Creation
@@ -547,10 +547,10 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"name": "John",
+        	"name": "davi",
         	"cpf": "09876543211",
-        	"email": "john@gmail.com",
-        	"password": "111111"
+        	"email": "davi@gmail.com",
+        	"password": "{{ _.patientPassword }}"
         }
     parameters: []
     headers:
@@ -677,9 +677,9 @@ resources:
     _type: request_group
   - _id: req_c3850b3366d8447cb4d68d19e75e7cda
     parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
-    modified: 1726769021338
+    modified: 1727268612406
     created: 1726768964507
-    url: http://localhost:8080/api/schedules/doctor/doctorwho@gmail.com
+    url: http://localhost:8080/api/schedules/doctor/{{ _.doctorEmail }}
     name: Reading All Schedule by Doctor
     description: ""
     method: GET
@@ -711,9 +711,9 @@ resources:
     _type: request
   - _id: req_faca4eba921a4bc7919302cbb809beb6
     parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
-    modified: 1726771028916
+    modified: 1727268627840
     created: 1726771019713
-    url: http://localhost:8080/api/schedules/doctor/doctorwho@gmail.com/available
+    url: http://localhost:8080/api/schedules/doctor/{{ _.doctorEmail }}/available
     name: Reading All Available by Doctor
     description: ""
     method: GET
@@ -745,9 +745,9 @@ resources:
     _type: request
   - _id: req_4b35b0f39e524524b4a9aefa5f382196
     parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
-    modified: 1726771104450
+    modified: 1727268640093
     created: 1726771099987
-    url: http://localhost:8080/api/schedules/doctor/doctorwho@gmail.com/reserved
+    url: http://localhost:8080/api/schedules/doctor/{{ _.doctorEmail }}/reserved
     name: Reading All Reserved by Doctor
     description: ""
     method: GET
@@ -779,9 +779,9 @@ resources:
     _type: request
   - _id: req_b20005379ddb4569833d184eb18688bd
     parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
-    modified: 1726769052188
+    modified: 1727268648645
     created: 1726769033425
-    url: http://localhost:8080/api/schedules/patient/john@gmail.com
+    url: http://localhost:8080/api/schedules/patient/{{ _.patientEmail }}
     name: Reading All Schedule by Patient
     description: ""
     method: GET
@@ -813,9 +813,9 @@ resources:
     _type: request
   - _id: req_95fb8610fe534af08548e34fb8f80522
     parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
-    modified: 1726769098977
+    modified: 1727227466658
     created: 1726769076892
-    url: http://localhost:8080/api/schedules/8feffa56-9585-4366-9735-eee716f591d1
+    url: http://localhost:8080/api/schedules/{{ _.scheduleId }}
     name: Reading One Schedule by ID
     description: ""
     method: GET
@@ -847,7 +847,7 @@ resources:
     _type: request
   - _id: req_1fed9c33b7164dbe831cbe299fd631c5
     parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
-    modified: 1726769368563
+    modified: 1727268663020
     created: 1726769156313
     url: http://localhost:8080/api/schedules
     name: Creation Schedule
@@ -857,10 +857,10 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"doctorEmail": "doctorwho@gmail.com",
+        	"doctorEmail": "{{ _.doctorEmail }}",
         	"date": "2024-09-20",
-        	"startTime": "13:00",
-        	"endTime": "14:00"
+        	"startTime": "14:00",
+        	"endTime": "15:00"
         }
     parameters: []
     headers:
@@ -891,25 +891,15 @@ resources:
     _type: request
   - _id: req_7eb89b5efcfb4f38a5ff552471331e6c
     parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
-    modified: 1726771962798
+    modified: 1727231053209
     created: 1726771907704
-    url: http://localhost:8080/api/schedules/7d1c46e4-2511-47f9-8bfe-b1f0b08e75fb/reservation/patient/john@gmail.com
+    url: http://localhost:8080/api/schedules/{{ _.scheduleId }}/reservation
     name: Reservation Schedule
     description: ""
     method: POST
-    body:
-      mimeType: application/json
-      text: |-
-        {
-        	"doctorEmail": "doctorwho@gmail.com",
-        	"date": "2024-09-20",
-        	"startTime": "13:00",
-        	"endTime": "14:00"
-        }
+    body: {}
     parameters: []
     headers:
-      - name: Content-Type
-        value: application/json
       - name: User-Agent
         value: insomnia/2023.5.8
         id: pair_1546fda8373d4e15beafdbafb37d9486
@@ -935,9 +925,9 @@ resources:
     _type: request
   - _id: req_f0aea0bedd7349418c57476b1b881d35
     parentId: fld_9b3d26b1ed6d448b9f14f700343ebd26
-    modified: 1726769371927
+    modified: 1727229132553
     created: 1726769315780
-    url: http://localhost:8080/api/schedules/c20c5da9-9ae3-484b-885d-a97764c84ea2
+    url: http://localhost:8080/api/schedules/{{ _.scheduleId }}
     name: Cancellation Schedule
     description: ""
     method: DELETE
@@ -957,7 +947,7 @@ resources:
       token: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MjY2ODA1NTIsImV4cCI6MTcyNjY4NDE1Mn0.kenl98iGQ59TO-hdpgjh0IstGWmvLV_0-_ubfU-NgISpj_gPkdZCm61QxV3hJERk-m85uWMWFzVlB2EOjeFmVQ
       prefix: Bearer
       disabled: true
-    metaSortKey: -1726683238768.5
+    metaSortKey: -1726683929814.625
     isPrivate: false
     pathParameters: []
     settingStoreCookies: true
@@ -969,15 +959,28 @@ resources:
     _type: request
   - _id: env_358c8038928f482f99f2bf822391d567
     parentId: wrk_39f44fe0120e48b687c62bef1fc3ddc4
-    modified: 1726684056471
+    modified: 1727268566933
     created: 1726541055563
     name: Base Environment
     data:
       autorizationToken: "{% response 'body', 'req_8d08518e15f44e39bc06f3fbc9bc9f99',
         'b64::JC5hY2Nlc3NUb2tlbg==::46b', 'when-expired', 60 %}"
+      scheduleId: "{% response 'body', 'req_1fed9c33b7164dbe831cbe299fd631c5',
+        'b64::JC5pZA==::46b', 'never', 60 %}"
+      doctorEmail: "{% response 'body', 'req_b029ea042bc44c92b27c55c767b64e41',
+        'b64::JC5lbWFpbA==::46b', 'never', 60 %}"
+      doctorPassword: "1122334455"
+      patientEmail: "{% response 'body', 'req_886313d3be634dea9c01c1d7b8f5d09c',
+        'b64::JC5lbWFpbA==::46b', 'never', 60 %}"
+      patientPassword: "1029384756"
     dataPropertyOrder:
       "&":
         - autorizationToken
+        - scheduleId
+        - doctorEmail
+        - doctorPassword
+        - patientEmail
+        - patientPassword
     color: null
     isPrivate: false
     metaSortKey: 1726541055563
