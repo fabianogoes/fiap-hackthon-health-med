@@ -1,7 +1,6 @@
 package com.fiap.hackthon.healthmed.schedule.domain.usecase
 
 import com.fiap.hackthon.healthmed.doctor.domain.exception.DoctorNotFoundException
-import com.fiap.hackthon.healthmed.doctor.domain.usecase.DoctorCreationUseCase
 import com.fiap.hackthon.healthmed.doctor.ports.DoctorPersistencePort
 import com.fiap.hackthon.healthmed.schedule.domain.entity.Schedule
 import com.fiap.hackthon.healthmed.schedule.domain.entity.Slot
