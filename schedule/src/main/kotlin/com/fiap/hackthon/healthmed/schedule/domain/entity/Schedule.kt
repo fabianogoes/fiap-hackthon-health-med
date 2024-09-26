@@ -9,6 +9,7 @@ data class Schedule(
     val slot: Slot,
     val patientEmail: Email? = null,
     val states: MutableList<ScheduleState> = mutableListOf(ScheduleState()),
+    val version: Int = 0,
 ) {
     val currentState: ScheduleState
         get() = states.maxByOrNull { it.createdAt } ?: throw IllegalStateException("Unknown schedule state")
