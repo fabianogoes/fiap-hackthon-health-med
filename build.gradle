@@ -7,16 +7,10 @@ buildscript {
 		apacheCommonsVersion    = "2.16.1"
 		jakartaInjectApiVersion = "2.0.1"
 		JwtVersion				= "0.12.3"
-	}
-
-	repositories {
-		maven {
-			url "https://plugins.gradle.org/m2/"
-		}
-	}
-
-	dependencies {
-		classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:5.1.0.4882"
+		assertjVersion			= "3.26.3"
+		mockkVersion			= "1.13.12"
+		springmockkVersion		= "4.0.2"
+		kotlinFakerVersion		= "1.9.0"
 	}
 }
 
@@ -26,7 +20,6 @@ plugins {
 	id "org.springframework.boot" version "3.3.2" apply false
 	id "io.spring.dependency-management" version "1.1.6" apply false
 	id "org.jetbrains.kotlin.plugin.jpa" version "1.9.24" apply false
-	id "org.sonarqube" version "5.1.0.4882" apply false
 }
 
 allprojects {
@@ -45,7 +38,6 @@ subprojects {
 	apply plugin: "org.springframework.boot"
 	apply plugin: "io.spring.dependency-management"
 	apply plugin: "org.jetbrains.kotlin.plugin.jpa"
-	apply plugin: "org.sonarqube"
 
 	sourceCompatibility = JavaVersion.VERSION_17
 	targetCompatibility = JavaVersion.VERSION_17
@@ -67,11 +59,11 @@ subprojects {
 
 		testImplementation "org.springframework.boot:spring-boot-starter-test"
 		testImplementation "org.jetbrains.kotlin:kotlin-test-junit5"
-		testImplementation "io.mockk:mockk-jvm:1.13.12"
+		testImplementation "io.mockk:mockk-jvm:$mockkVersion"
 		testImplementation "org.springframework.security:spring-security-test"
-		testImplementation 'org.assertj:assertj-core:3.26.3'
-		testImplementation "com.ninja-squad:springmockk:4.0.2"
-		implementation "io.github.serpro69:kotlin-faker:1.9.0"
+		testImplementation "org.assertj:assertj-core:$assertjVersion"
+		testImplementation "com.ninja-squad:springmockk:$springmockkVersion"
+		implementation "io.github.serpro69:kotlin-faker:$kotlinFakerVersion"
 		testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 	}
 
@@ -102,14 +94,6 @@ subprojects {
 	tasks.withType(BootJar).tap {
 		configureEach {
 			mainClass.set("com.fiap.hackthon.healthmed.app.AppRunKt")  // Use mainClass em vez de mainClassName
-		}
-	}
-
-	sonar {
-		properties {
-			property "sonar.projectKey", "fabianogoes_fiap-hackthon-health-med"
-			property "sonar.organization", "fabianogoes"
-			property "sonar.host.url", "https://sonarcloud.io"
 		}
 	}
 }
