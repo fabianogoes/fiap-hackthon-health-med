@@ -26,7 +26,7 @@ plugins {
 	id("org.jetbrains.kotlin.plugin.jpa") version "$kotlinVersion" apply false
 	id("org.jlleitschuh.gradle.ktlint") version "$ktlint" apply false
 	id("jacoco")
-	id("org.sonarqube") version "4.4.1.3373" apply false
+//	id("org.sonarqube") version "4.4.1.3373" apply false
 }
 
 
@@ -48,7 +48,7 @@ subprojects {
 	apply plugin: "io.spring.dependency-management"
 	apply plugin: "org.jetbrains.kotlin.plugin.jpa"
 	apply plugin: "org.jlleitschuh.gradle.ktlint"
-	apply plugin: "org.sonarqube"
+//	apply plugin: "org.sonarqube"
 	apply plugin: "jacoco"
 
 	sourceCompatibility = JavaVersion.VERSION_17
@@ -119,13 +119,13 @@ subprojects {
 		}
 	}
 
-	sonar {
-		properties {
-			property "sonar.projectKey", "fabianogoes_fiap-hackthon-health-med"
-			property "sonar.organization", "fabianogoes"
-			property "sonar.host.url", "https://sonarcloud.io"
-		}
-	}
+//	sonar {
+//		properties {
+//			property "sonar.projectKey", "fabianogoes_fiap-hackthon-health-med"
+//			property "sonar.organization", "fabianogoes"
+//			property "sonar.host.url", "https://sonarcloud.io"
+//		}
+//	}
 
 	tasks.withType(KotlinCompile).configureEach {
 		compilerOptions {
