@@ -25,7 +25,10 @@ plugins {
 	id("io.spring.dependency-management") version "$springDependencyManagement" apply false
 	id("org.jetbrains.kotlin.plugin.jpa") version "$kotlinVersion" apply false
 	id("org.jlleitschuh.gradle.ktlint") version "$ktlint" apply false
+	id("jacoco")
+	id("org.sonarqube") version "4.4.1.3373" apply false
 }
+
 
 allprojects {
 	repositories {
@@ -45,6 +48,8 @@ subprojects {
 	apply plugin: "io.spring.dependency-management"
 	apply plugin: "org.jetbrains.kotlin.plugin.jpa"
 	apply plugin: "org.jlleitschuh.gradle.ktlint"
+	apply plugin: "org.sonarqube"
+	apply plugin: "jacoco"
 
 	sourceCompatibility = JavaVersion.VERSION_17
 	targetCompatibility = JavaVersion.VERSION_17
@@ -86,9 +91,40 @@ subprojects {
 		}
 	}
 
-
-	tasks.withType(Test).configureEach {
+	test {
 		useJUnitPlatform()
+		finalizedBy jacocoTestReport
+	}
+
+	jacocoTestReport {
+		dependsOn test
+
+		classDirectories.setFrom fileTree(dir: "build/classes/kotlin/main/")
+				.exclude(
+						"**/app/**",
+						"**/*Configuration**",
+						"**/adapters/**",
+						"**/entity/**",
+						"**/faker/**",
+						"**/exception/**",
+						"**/*UpdateUseCase**",
+						"**/*DeletionUseCase**",
+				)
+
+		reports {
+			xml.required = false
+			csv.required = false
+			html.required = true
+			html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+		}
+	}
+
+	sonar {
+		properties {
+			property "sonar.projectKey", "fabianogoes_fiap-hackthon-health-med"
+			property "sonar.organization", "fabianogoes"
+			property "sonar.host.url", "https://sonarcloud.io"
+		}
 	}
 
 	tasks.withType(KotlinCompile).configureEach {
