@@ -50,8 +50,11 @@ jobs:
           min-coverage-overall: 40
           min-coverage-changed-files: 60
 
-      - name: jacoco-badge-generator
+      - name: jacoco-badge-generator-schedule
         uses: cicirello/jacoco-badge-generator@v2.11.0
+        with:
+          generate-branches-badge: true
+          jacoco-csv-file: /schedule/build/reports/jacoco/test/jacocoTestReport.csv
 
 
   build:    
