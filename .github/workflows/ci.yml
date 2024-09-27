@@ -33,25 +33,40 @@ jobs:
           ./gradlew clean jacocoTestReport
 
       - name: jacoco-badge-generator-schedule
+        id: jacocoModSchedule
         uses: cicirello/jacoco-badge-generator@v2.11.0
         with:
           generate-branches-badge: true
           jacoco-csv-file: schedule/build/reports/jacoco/test/jacocoTestReport.csv
           coverage-badge-filename: jacoco-schedule.svg
+          branches-badge-filename: branches-schedule.svg
+          coverage-label: coverage (module Schedule)
+          branches-label: branches (module Schedule)
+          workflow-summary-heading: Module Schedule JaCoCo Test Coverage Summary
 
       - name: jacoco-badge-generator-doctor
+        id: jacocoModDoctor
         uses: cicirello/jacoco-badge-generator@v2.11.0
         with:
           generate-branches-badge: true
           jacoco-csv-file: doctor/build/reports/jacoco/test/jacocoTestReport.csv
           coverage-badge-filename: jacoco-doctor.svg
+          branches-badge-filename: branches-doctor.svg
+          coverage-label: coverage (module Doctor)
+          branches-label: branches (module Doctor)
+          workflow-summary-heading: Module Doctor JaCoCo Test Coverage Summary
 
-      - name: jacoco-badge-generator-doctor
+      - name: jacoco-badge-generator-patient
+        id: jacocoModPatient
         uses: cicirello/jacoco-badge-generator@v2.11.0
         with:
           generate-branches-badge: true
           jacoco-csv-file: patient/build/reports/jacoco/test/jacocoTestReport.csv
           coverage-badge-filename: jacoco-patient.svg
+          branches-badge-filename: branches-patient.svg
+          coverage-label: coverage (module Patient)
+          branches-label: branches (module Patient)
+          workflow-summary-heading: Module Patient JaCoCo Test Coverage Summary
 
       - name: Log coverage percentage
         run: |
