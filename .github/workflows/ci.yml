@@ -40,8 +40,8 @@ jobs:
           jacoco-csv-file: schedule/build/reports/jacoco/test/jacocoTestReport.csv
           coverage-badge-filename: jacoco-schedule.svg
           branches-badge-filename: branches-schedule.svg
-          coverage-label: Coverage module Schedule [Use Cases]
-          workflow-summary-heading: Module Schedule JaCoCo Test Coverage Summary
+          coverage-label: Coverage Schedule
+          workflow-summary-heading: Module Schedule[Use Cases] JaCoCo Test Coverage Summary
 
       - name: jacoco-badge-generator-doctor
         id: jacocoModDoctor
@@ -51,8 +51,8 @@ jobs:
           jacoco-csv-file: doctor/build/reports/jacoco/test/jacocoTestReport.csv
           coverage-badge-filename: jacoco-doctor.svg
           branches-badge-filename: branches-doctor.svg
-          coverage-label: Coverage module Doctor [Use Cases]
-          workflow-summary-heading: Module Doctor JaCoCo Test Coverage Summary
+          coverage-label: Coverage Doctor
+          workflow-summary-heading: Module Doctor[Use Cases] JaCoCo Test Coverage Summary
 
       - name: jacoco-badge-generator-patient
         id: jacocoModPatient
@@ -62,8 +62,8 @@ jobs:
           jacoco-csv-file: patient/build/reports/jacoco/test/jacocoTestReport.csv
           coverage-badge-filename: jacoco-patient.svg
           branches-badge-filename: branches-patient.svg
-          coverage-label: Coverage module Patient [Use Cases]
-          workflow-summary-heading: Module Patient JaCoCo Test Coverage Summary
+          coverage-label: Coverage Patient
+          workflow-summary-heading: Module Patient[Use Cases] JaCoCo Test Coverage Summary
 
       - name: Log coverage percentage
         run: |
