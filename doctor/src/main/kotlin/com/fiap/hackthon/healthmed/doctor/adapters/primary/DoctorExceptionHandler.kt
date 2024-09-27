@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.ResponseStatus
 
 @ControllerAdvice
 class DoctorExceptionHandler {
-
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(DoctorNotFoundException::class)
     fun doctorNotFoundException(ex: DoctorNotFoundException): ResponseEntity<ErrorResponse> {
-        val errorResponse = ErrorResponse(
-            status = HttpStatus.NOT_FOUND.value(),
-            message = ex.message ?: "Doctor not found",
-        )
+        val errorResponse =
+            ErrorResponse(
+                status = HttpStatus.NOT_FOUND.value(),
+                message = ex.message ?: "Doctor not found",
+            )
 
         return ResponseEntity(errorResponse, HttpStatus.NOT_FOUND)
     }
@@ -25,10 +25,11 @@ class DoctorExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DoctorEmailAlreadyExistsException::class)
     fun doctorAlreadyExistsException(ex: DoctorEmailAlreadyExistsException): ResponseEntity<ErrorResponse> {
-        val errorResponse = ErrorResponse(
-            status = HttpStatus.BAD_REQUEST.value(),
-            message = ex.message ?: "Doctor already exists",
-        )
+        val errorResponse =
+            ErrorResponse(
+                status = HttpStatus.BAD_REQUEST.value(),
+                message = ex.message ?: "Doctor already exists",
+            )
 
         return ResponseEntity(errorResponse, HttpStatus.BAD_REQUEST)
     }
@@ -37,5 +38,4 @@ class DoctorExceptionHandler {
         val status: Int,
         val message: String,
     )
-
 }

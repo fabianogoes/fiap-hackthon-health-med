@@ -7,9 +7,11 @@ import java.time.LocalTime
 import java.util.UUID
 
 @Repository
-interface SchedulePostgresRepository: JpaRepository<ScheduleDBO, UUID> {
+interface SchedulePostgresRepository : JpaRepository<ScheduleDBO, UUID> {
     fun findAllByDoctorEmailOrderByStartTime(doctorEmail: String): List<ScheduleDBO>
+
     fun findAllByPatientEmailOrderByStartTime(patientEmail: String): List<ScheduleDBO>
+
     fun existsByDoctorEmailAndDateAndStartTimeAndEndTime(
         doctorEmail: String,
         date: LocalDate,

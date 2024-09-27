@@ -8,7 +8,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor
 @Configuration
 @EnableAsync
 class AppAsyncConfiguration {
-
     @Bean(name = ["taskExecutor"])
     fun taskExecutor(): ThreadPoolTaskExecutor {
         val executor = ThreadPoolTaskExecutor()
@@ -18,5 +17,4 @@ class AppAsyncConfiguration {
         executor.initialize()
         return executor
     }
-
 }

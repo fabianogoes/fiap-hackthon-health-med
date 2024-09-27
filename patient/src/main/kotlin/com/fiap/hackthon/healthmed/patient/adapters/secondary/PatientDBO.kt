@@ -16,25 +16,25 @@ data class PatientDBO(
     @Id
     val id: UUID,
     val name: String,
-
     @Column(unique = true)
     val cpf: String,
-
     @Column(unique = true)
     val email: String,
 ) {
-    fun toEntity(user: User): Patient = Patient(
-        id = id,
-        name = name,
-        cpf = CPF(cpf),
-        email = Email(email),
-        user = user,
-    )
+    fun toEntity(user: User): Patient =
+        Patient(
+            id = id,
+            name = name,
+            cpf = CPF(cpf),
+            email = Email(email),
+            user = user,
+        )
 }
 
-fun Patient.toDBO(): PatientDBO = PatientDBO(
-    id = id,
-    name = name,
-    cpf = cpf.number,
-    email = email.value,
-)
+fun Patient.toDBO(): PatientDBO =
+    PatientDBO(
+        id = id,
+        name = name,
+        cpf = cpf.number,
+        email = email.value,
+    )

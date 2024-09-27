@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseStatus
 
 @ControllerAdvice
 class ScheduleExceptionHandler {
-
     @ExceptionHandler(ScheduleAlreadyReservedException::class)
     fun scheduleAlreadyReservedException(ex: ScheduleAlreadyReservedException) =
         ErrorResponse(
@@ -32,7 +31,7 @@ class ScheduleExceptionHandler {
     fun scheduleAlreadyExistsException(ex: ScheduleAlreadyExistsException) =
         ErrorResponse(
             status = HttpStatus.BAD_REQUEST.value(),
-            message = ex.message ?: SCHEDULE_ERROR_MESSAGE
+            message = ex.message ?: SCHEDULE_ERROR_MESSAGE,
         ).let { ResponseEntity.badRequest().body(it) }
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -47,5 +46,4 @@ class ScheduleExceptionHandler {
         private const val SCHEDULE_ERROR_MESSAGE = "Schedule error"
         private const val SCHEDULE_NOT_FOUND = "Schedule not found"
     }
-
 }

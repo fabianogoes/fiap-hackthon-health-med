@@ -6,9 +6,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import org.thymeleaf.spring6.SpringTemplateEngine
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 
-
 @Configuration
-class ThymeleafConfig : WebMvcConfigurer {
+class ThymeleafConfiguration : WebMvcConfigurer {
     @Bean
     fun templateResolver(): ClassLoaderTemplateResolver {
         val resolver = ClassLoaderTemplateResolver()

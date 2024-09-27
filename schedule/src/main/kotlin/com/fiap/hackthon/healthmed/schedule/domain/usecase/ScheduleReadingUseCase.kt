@@ -17,8 +17,7 @@ class ScheduleReadingUseCase(
     private val schedulePersistencePort: SchedulePersistencePort,
     private val doctorPersistencePort: DoctorPersistencePort,
     private val patientPersistencePort: PatientPersistencePort,
-): ScheduleReadingPort {
-
+) : ScheduleReadingPort {
     override fun readAll(): List<Schedule> {
         return schedulePersistencePort.readAll()
     }
@@ -64,5 +63,4 @@ class ScheduleReadingUseCase(
             .readAllByDoctor(doctorEmail)
             .filter { it.isReserved() }
     }
-
 }

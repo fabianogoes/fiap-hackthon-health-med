@@ -23,21 +23,28 @@ open class DoctorCreationUseCase(
     private val log = logger<DoctorCreationUseCase>()
 
     @Transactional
-    override fun doCreate(name: String, cpf: String, email: String, crm: String, password: String): Doctor {
+    override fun doCreate(
+        name: String,
+        cpf: String,
+        email: String,
+        crm: String,
+        password: String,
+    ): Doctor {
         log.info("Creating name: $name, cpf: $cpf, email: $email, crm: $crm, password: $password")
 
         doctorPersistencePort
             .readOneByEmail(email.toEmailVO())
             ?.also { throw DoctorEmailAlreadyExistsException(email) }
 
-        val doctor = Doctor(
-            id = UUID.randomUUID(),
-            name = name,
-            cpf = CPF(cpf),
-            email = Email(email),
-            crm = CRM(crm),
-            user = userCreateUserPort.create(email, password, User.Role.DOCTOR_ROLE.name),
-        )
+        val doctor =
+            Doctor(
+                id = UUID.randomUUID(),
+                name = name,
+                cpf = CPF(cpf),
+                email = Email(email),
+                crm = CRM(crm),
+                user = userCreateUserPort.create(email, password, User.Role.DOCTOR_ROLE.name),
+            )
 
         return doctorPersistencePort
             .create(doctor)

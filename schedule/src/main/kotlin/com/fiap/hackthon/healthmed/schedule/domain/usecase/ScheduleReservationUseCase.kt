@@ -25,24 +25,30 @@ open class ScheduleReservationUseCase(
     private val doctorPersistencePort: DoctorPersistencePort,
     private val patientPersistencePort: PatientPersistencePort,
     private val mailPort: MailPort,
-): ScheduleReservationPort {
+) : ScheduleReservationPort {
     private val log = logger<ScheduleReservationUseCase>()
 
     @Transactional
-    override fun reserve(id: UUID, patientEmail: Email) {
-        val schedule = schedulePersistencePort
-            .readById(id)
-            ?: throw ScheduleNotFoundException(id.toString())
+    override fun reserve(
+        id: UUID,
+        patientEmail: Email,
+    ) {
+        val schedule =
+            schedulePersistencePort
+                .readById(id)
+                ?: throw ScheduleNotFoundException(id.toString())
 
         if (!schedule.canBeReserved()) throw ScheduleAlreadyReservedException(schedule)
 
-        val doctor = doctorPersistencePort
-            .readOneByEmail(schedule.slot.doctorEmail)
-            ?: throw DoctorNotFoundException(schedule.slot.doctorEmail.value)
+        val doctor =
+            doctorPersistencePort
+                .readOneByEmail(schedule.slot.doctorEmail)
+                ?: throw DoctorNotFoundException(schedule.slot.doctorEmail.value)
 
-        val patient = patientPersistencePort
-            .readOneByEmail(patientEmail)
-            ?: throw PatientNotFoundException(patientEmail.value)
+        val patient =
+            patientPersistencePort
+                .readOneByEmail(patientEmail)
+                ?: throw PatientNotFoundException(patientEmail.value)
 
         schedulePersistencePort
             .save(schedule.copy(patientEmail = patientEmail).reserved())
@@ -57,12 +63,13 @@ open class ScheduleReservationUseCase(
         kotlin.runCatching {
             log.info("sending email to doctor {} for reservation schedule {} to patient {}", doctor.email, schedule, patient.email)
 
-            val messageVars = mapOf(
-                MAIL_SCHEDULE_DOCTOR_VARIABLE_NAME to doctor.name,
-                MAIL_SCHEDULE_PATIENT_VARIABLE_NAME to patient.name,
-                MAIL_SCHEDULE_DATE_VARIABLE_NAME to schedule.slot.date.toStringFormatted(),
-                MAIL_SCHEDULE_TIME_VARIABLE_NAME to "${schedule.slot.startTime}",
-            )
+            val messageVars =
+                mapOf(
+                    MAIL_SCHEDULE_DOCTOR_VARIABLE_NAME to doctor.name,
+                    MAIL_SCHEDULE_PATIENT_VARIABLE_NAME to patient.name,
+                    MAIL_SCHEDULE_DATE_VARIABLE_NAME to schedule.slot.date.toStringFormatted(),
+                    MAIL_SCHEDULE_TIME_VARIABLE_NAME to "${schedule.slot.startTime}",
+                )
 
             mailPort.sendEmail(
                 to = schedule.slot.doctorEmail.value,

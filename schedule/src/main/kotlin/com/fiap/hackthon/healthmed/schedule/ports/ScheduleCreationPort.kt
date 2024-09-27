@@ -6,5 +6,10 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 interface ScheduleCreationPort {
-    fun create(doctorEmail: Email, date: LocalDate, startTime: LocalTime, endTime: LocalTime): Schedule
+    fun create(
+        doctorEmail: Email,
+        date: LocalDate,
+        startTime: LocalTime,
+        endTime: LocalTime,
+    ): Schedule
 }

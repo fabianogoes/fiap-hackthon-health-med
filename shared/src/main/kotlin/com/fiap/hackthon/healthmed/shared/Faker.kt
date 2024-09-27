@@ -6,8 +6,11 @@ import kotlin.random.Random
 val faker: Faker = Faker()
 
 fun Faker.email(): Email = "${faker.name.firstName().lowercase()}@gmail.com".toEmailVO()
+
 fun Faker.cpf(): CPF = randomCPF().toCpfVO()
+
 fun Faker.crm(): String = randomCRM()
+
 fun Faker.password(size: Int = 6): String = randomPassword(size)
 
 fun randomCPF(): String {
@@ -33,7 +36,9 @@ fun randomCPF(): String {
 }
 
 private fun randomizer(number: Int = 9) = (Math.random() * number).toInt()
+
 private fun randomCRM(): String = "${randomizer(99999).leftPadWithZero(5)}/${randomUF().name}"
+
 private fun randomPassword(size: Int = 6): String {
     val caracteres = ('a'..'z') + ('A'..'Z') + ('0'..'9')
     return buildString {
@@ -50,8 +55,30 @@ private fun randomUF(): UF {
 }
 
 enum class UF {
-    AC, AL, AP, AM, BA, CE, ES, GO, MA, MT, MS, MG, PA, PB, PR, PE, PI, RJ, RN, RS, RO, RR, SC, SP, SE, TO
+    AC,
+    AL,
+    AP,
+    AM,
+    BA,
+    CE,
+    ES,
+    GO,
+    MA,
+    MT,
+    MS,
+    MG,
+    PA,
+    PB,
+    PR,
+    PE,
+    PI,
+    RJ,
+    RN,
+    RS,
+    RO,
+    RR,
+    SC,
+    SP,
+    SE,
+    TO,
 }
-
-
-

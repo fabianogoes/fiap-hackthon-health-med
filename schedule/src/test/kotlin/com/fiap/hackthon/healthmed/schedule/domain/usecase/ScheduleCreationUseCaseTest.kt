@@ -16,13 +16,13 @@ import java.time.LocalDate
 import java.time.LocalTime
 
 class ScheduleCreationUseCaseTest {
-
     private val schedulePersistencePort: SchedulePersistencePort = mockk()
     private val doctorPersistencePort: DoctorPersistencePort = mockk()
-    private val scheduleCreationPort: ScheduleCreationPort = ScheduleCreationUseCase(
-        schedulePersistencePort,
-        doctorPersistencePort,
-    )
+    private val scheduleCreationPort: ScheduleCreationPort =
+        ScheduleCreationUseCase(
+            schedulePersistencePort,
+            doctorPersistencePort,
+        )
 
     @Test
     fun `it should create a new test schedule`() {
@@ -47,5 +47,4 @@ class ScheduleCreationUseCaseTest {
         assertThat(actualSchedule).isNotNull()
         assertThat(actualSchedule).isEqualTo(expectedSchedule)
     }
-
 }

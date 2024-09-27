@@ -29,19 +29,23 @@ open class ScheduleCancellationUseCase(
 
     @Transactional
     override fun cancelById(id: UUID) {
-        val schedule = (schedulePersistencePort
-            .readById(id)
-            ?: throw ScheduleNotFoundException(id.toString()))
+        val schedule = (
+            schedulePersistencePort
+                .readById(id)
+                ?: throw ScheduleNotFoundException(id.toString())
+        )
 
         if (!schedule.canBeCanceled()) throw ScheduleStateCanNotBeCanceledException(schedule)
 
-        val doctor = doctorPersistencePort
-            .readOneByEmail(schedule.slot.doctorEmail)
-            ?: throw DoctorNotFoundException(schedule.slot.doctorEmail.value)
+        val doctor =
+            doctorPersistencePort
+                .readOneByEmail(schedule.slot.doctorEmail)
+                ?: throw DoctorNotFoundException(schedule.slot.doctorEmail.value)
 
-        val patient = patientPersistencePort
-            .readOneByEmail(schedule.patientEmail!!)
-            ?: throw PatientNotFoundException(schedule.patientEmail.value)
+        val patient =
+            patientPersistencePort
+                .readOneByEmail(schedule.patientEmail!!)
+                ?: throw PatientNotFoundException(schedule.patientEmail.value)
 
         schedulePersistencePort
             .save(schedule.copy(patientEmail = null).canceled().scheduled())
@@ -56,12 +60,13 @@ open class ScheduleCancellationUseCase(
         kotlin.runCatching {
             log.info("sending email to doctor {} for cancellation schedule {} to patient {}", doctor.email, schedule, patient.email)
 
-            val messageVars = mapOf(
-                MAIL_SCHEDULE_DOCTOR_VARIABLE_NAME to doctor.name,
-                MAIL_SCHEDULE_PATIENT_VARIABLE_NAME to patient.name,
-                MAIL_SCHEDULE_DATE_VARIABLE_NAME to schedule.slot.date.toStringFormatted(),
-                MAIL_SCHEDULE_TIME_VARIABLE_NAME to "${schedule.slot.startTime}",
-            )
+            val messageVars =
+                mapOf(
+                    MAIL_SCHEDULE_DOCTOR_VARIABLE_NAME to doctor.name,
+                    MAIL_SCHEDULE_PATIENT_VARIABLE_NAME to patient.name,
+                    MAIL_SCHEDULE_DATE_VARIABLE_NAME to schedule.slot.date.toStringFormatted(),
+                    MAIL_SCHEDULE_TIME_VARIABLE_NAME to "${schedule.slot.startTime}",
+                )
 
             mailPort.sendEmail(
                 to = schedule.slot.doctorEmail.value,

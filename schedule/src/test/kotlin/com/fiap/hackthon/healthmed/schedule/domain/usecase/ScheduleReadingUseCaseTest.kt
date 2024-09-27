@@ -17,16 +17,16 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class ScheduleReadingUseCaseTest {
-
     private val schedulePersistencePort: SchedulePersistencePort = mockk()
     private val doctorPersistencePort: DoctorPersistencePort = mockk()
     private val patientPersistencePort: PatientPersistencePort = mockk()
 
-    private val scheduleReadingPort: ScheduleReadingPort = ScheduleReadingUseCase(
-        schedulePersistencePort,
-        doctorPersistencePort,
-        patientPersistencePort,
-    )
+    private val scheduleReadingPort: ScheduleReadingPort =
+        ScheduleReadingUseCase(
+            schedulePersistencePort,
+            doctorPersistencePort,
+            patientPersistencePort,
+        )
 
     @Test
     fun `it should read all schedules by doctor`() {
@@ -106,5 +106,4 @@ class ScheduleReadingUseCaseTest {
         assertThat(actualSchedules).isNotNull()
         assertThat(actualSchedules).isEqualTo(expectedSchedules)
     }
-
 }

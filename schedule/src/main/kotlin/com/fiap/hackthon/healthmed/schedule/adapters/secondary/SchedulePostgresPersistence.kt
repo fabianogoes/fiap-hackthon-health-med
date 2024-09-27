@@ -11,8 +11,7 @@ import java.util.UUID
 @Repository
 class SchedulePostgresPersistence(
     private val scheduleRepository: SchedulePostgresRepository,
-): SchedulePersistencePort {
-
+) : SchedulePersistencePort {
     override fun save(schedule: Schedule): Schedule =
         scheduleRepository
             .save(schedule.toDBO())

@@ -15,7 +15,11 @@ class PatientUpdateUseCase(
 ) : PatientUpdatePort {
     private val log = logger<PatientUpdateUseCase>()
 
-    override fun doUpdate(id: UUID, name: String, email: String): Patient {
+    override fun doUpdate(
+        id: UUID,
+        name: String,
+        email: String,
+    ): Patient {
         log.info("Updating Patient id: $id, name: $name and email: $email")
 
         return patientPersistencePort
@@ -23,5 +27,4 @@ class PatientUpdateUseCase(
             ?.let { patientPersistencePort.update(it.copy(name = name, email = Email(email))) }
             ?: throw PatientNotFoundException(id.toString())
     }
-
 }

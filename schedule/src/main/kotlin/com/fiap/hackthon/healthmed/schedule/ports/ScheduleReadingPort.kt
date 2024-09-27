@@ -6,9 +6,14 @@ import java.util.UUID
 
 interface ScheduleReadingPort {
     fun readAll(): List<Schedule>
+
     fun readById(id: UUID): Schedule
+
     fun readAllByDoctor(doctorEmail: Email): List<Schedule>
+
     fun readAllByPatient(patientEmail: Email): List<Schedule>
+
     fun readAllAvailableByDoctor(doctorEmail: Email): List<Schedule>
+
     fun readAllReservedByDoctor(doctorEmail: Email): List<Schedule>
 }

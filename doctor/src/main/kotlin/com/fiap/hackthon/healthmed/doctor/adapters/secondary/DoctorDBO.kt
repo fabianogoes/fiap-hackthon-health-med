@@ -20,20 +20,22 @@ data class DoctorDBO(
     val email: String,
     val crm: String,
 ) {
-    fun toEntity(user: User): Doctor = Doctor(
-        id = id,
-        name = name,
-        cpf = CPF(cpf),
-        email = Email(email),
-        crm = CRM(crm),
-        user = user,
-    )
+    fun toEntity(user: User): Doctor =
+        Doctor(
+            id = id,
+            name = name,
+            cpf = CPF(cpf),
+            email = Email(email),
+            crm = CRM(crm),
+            user = user,
+        )
 }
 
-fun Doctor.toDBO(): DoctorDBO = DoctorDBO(
-    id = id,
-    name = name,
-    cpf = cpf.number,
-    email = email.value,
-    crm = crm.number,
-)
+fun Doctor.toDBO(): DoctorDBO =
+    DoctorDBO(
+        id = id,
+        name = name,
+        cpf = cpf.number,
+        email = email.value,
+        crm = crm.number,
+    )
