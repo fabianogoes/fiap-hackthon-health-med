@@ -30,6 +30,13 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
+      - name: Restore cached artifact
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.JAR_PATH }}
+          key: ${{ runner.os }}-java-${{ hashFiles('**/build.gradle') }}
+          restore-keys: |
+            ${{ runner.os }}-java-
       - uses: actions/setup-java@v4
         with:
           java-version: '17'
@@ -85,6 +92,13 @@ jobs:
       attestations: write
     steps:
     - uses: actions/checkout@v4
+    - name: Restore cached artifact
+      uses: actions/cache@v3
+      with:
+        path: ${{ env.JAR_PATH }}
+        key: ${{ runner.os }}-java-${{ hashFiles('**/build.gradle') }}
+        restore-keys: |
+          ${{ runner.os }}-java-
     - uses: actions/setup-java@v4
       with:
         java-version: '17'
