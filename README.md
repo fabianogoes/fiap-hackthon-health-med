@@ -1,6 +1,8 @@
 # FIAP - Hackthon Health&Med
 
-[![Coverage](.github/badges/jacoco.svg)](https://github.com/fabianogoes/fiap-hackthon-health-med/actions/workflows/ci.yml)
+[![Coverage Schedule](.github/badges/jacoco-schedule.svg)](https://github.com/fabianogoes/fiap-hackthon-health-med/actions/workflows/ci.yml)
+[![Coverage Doctor](.github/badges/jacoco-doctor.svg)](https://github.com/fabianogoes/fiap-hackthon-health-med/actions/workflows/ci.yml)
+[![Coverage Patient](.github/badges/jacoco-patient.svg)](https://github.com/fabianogoes/fiap-hackthon-health-med/actions/workflows/ci.yml)
 
 A Health&Med, é uma Operadora de Saúde cujo objetivo é digitalizar seus processos e operação. O principal gargalo da empresa é o Agendamento de Consultas Médicas, que atualmente ocorre exclusivamente por meio de ligações para a central de atendimento da empresa.   
 Recentemente, a empresa recebeu um aporte e decidiu investir no desenvolvimento de um sistema proprietário, visando proporcionar um **processo de Agendamentos de Consultas Médicas 100% digital e mais ágil**.   
@@ -22,6 +24,8 @@ O objetivo do **Hackathon** é a entrega de um produto de MVP desenvolvido e que
 - [x] [GitHub Actions CI/CD](https://docs.github.com/pt/actions)
 - [x] [MockK](https://mockk.io/)
 - [x] [Kotlin Faker](https://serpro69.github.io/kotlin-faker/)
+- [x] [Ktlint](https://github.com/pinterest/ktlint)
+- [x] [Jacoco](https://docs.gradle.org/current/userguide/jacoco_plugin.html)
 - [ ] [Kluent](https://markusamshove.github.io/Kluent/)
 
 ## Módulos
