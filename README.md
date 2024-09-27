@@ -6,6 +6,8 @@ Para viabilizar o desenvolvimento de um sistema que esteja conforme as melhores 
 
 O objetivo do **Hackathon** é a entrega de um produto de MVP desenvolvido e que cumpra os [requisitos funcionais e não funcionais](./Requisitos.md).
 
+[![Coverage](.github/badges/jacoco.svg)](https://github.com/fabianogoes/fiap-hackthon-health-med/actions/workflows/ci.yml)
+
 ## Stack
 
 - [x] [Kotlin](https://kotlinlang.org/) `1.9.24`
