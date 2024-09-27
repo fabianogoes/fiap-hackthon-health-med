@@ -5,10 +5,10 @@ import com.fiap.hackthon.healthmed.doctor.domain.entity.toCrmVO
 import com.fiap.hackthon.healthmed.doctor.domain.exception.DoctorEmailAlreadyExistsException
 import com.fiap.hackthon.healthmed.doctor.ports.DoctorCreationPort
 import com.fiap.hackthon.healthmed.doctor.ports.DoctorPersistencePort
-import com.fiap.hackthon.healthmed.shared.faker
-import com.fiap.hackthon.healthmed.shared.email
 import com.fiap.hackthon.healthmed.shared.cpf
 import com.fiap.hackthon.healthmed.shared.crm
+import com.fiap.hackthon.healthmed.shared.email
+import com.fiap.hackthon.healthmed.shared.faker
 import com.fiap.hackthon.healthmed.shared.password
 import com.fiap.hackthon.healthmed.user.domain.entity.User
 import com.fiap.hackthon.healthmed.user.ports.CreateUserPort
@@ -21,14 +21,14 @@ import org.junit.jupiter.api.assertThrows
 import java.util.UUID
 
 class DoctorCreationUseCaseTest {
-
     private val doctorPersistencePort: DoctorPersistencePort = mockk()
     private val userCreateUserPort: CreateUserPort = mockk()
 
-    private val doctorCreationPort: DoctorCreationPort = DoctorCreationUseCase(
-        doctorPersistencePort,
-        userCreateUserPort,
-    )
+    private val doctorCreationPort: DoctorCreationPort =
+        DoctorCreationUseCase(
+            doctorPersistencePort,
+            userCreateUserPort,
+        )
 
     @Test
     fun `it should create a new Doctor`() {
@@ -47,8 +47,9 @@ class DoctorCreationUseCaseTest {
         every { doctorPersistencePort.readOneByEmail(email) } returns null
 
         // When
-        val actualDoctor = doctorCreationPort
-            .doCreate(name, cpf.number, email.value, crm.number, password)
+        val actualDoctor =
+            doctorCreationPort
+                .doCreate(name, cpf.number, email.value, crm.number, password)
 
         // Then
         verify(exactly = 1) { doctorPersistencePort.create(any()) }
@@ -84,5 +85,4 @@ class DoctorCreationUseCaseTest {
         // Then
         verify(exactly = 1) { doctorPersistencePort.readOneByEmail(email) }
     }
-
 }

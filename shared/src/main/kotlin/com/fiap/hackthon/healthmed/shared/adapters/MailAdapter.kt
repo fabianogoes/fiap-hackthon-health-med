@@ -13,14 +13,19 @@ class MailAdapter(
     private val javaMailSender: JavaMailSender,
     private val templateEngine: TemplateEngine,
 ) : MailPort {
-
     @Async
-    override fun sendEmail(to: String, subject: String, messageVars: Map<String, String>, templateName: String) {
-        val message = MimeMessageHelper(
-            javaMailSender.createMimeMessage(),
-            MAIL_MULTIPART,
-            MAIL_ENCODING,
-        )
+    override fun sendEmail(
+        to: String,
+        subject: String,
+        messageVars: Map<String, String>,
+        templateName: String,
+    ) {
+        val message =
+            MimeMessageHelper(
+                javaMailSender.createMimeMessage(),
+                MAIL_MULTIPART,
+                MAIL_ENCODING,
+            )
 
         message.setTo(to)
         message.setSubject(subject)
@@ -39,5 +44,4 @@ class MailAdapter(
         private const val MAIL_MULTIPART = true
         private const val MAIL_HTML = true
     }
-
 }

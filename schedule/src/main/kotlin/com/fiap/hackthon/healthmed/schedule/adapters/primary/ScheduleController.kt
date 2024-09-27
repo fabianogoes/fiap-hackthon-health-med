@@ -8,15 +8,14 @@ import com.fiap.hackthon.healthmed.shared.Email
 import org.springframework.http.HttpStatus
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.core.userdetails.UserDetails
-import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.bind.annotation.ResponseStatus
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.DeleteMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.ResponseStatus
+import org.springframework.web.bind.annotation.RestController
 import java.util.UUID
 
 @RestController
@@ -27,10 +26,11 @@ class ScheduleController(
     private val scheduleCancellationPort: ScheduleCancellationPort,
     private val scheduleReservationPort: ScheduleReservationPort,
 ) {
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody payload: ScheduleCreationRequest): ScheduleResponse =
+    fun create(
+        @RequestBody payload: ScheduleCreationRequest,
+    ): ScheduleResponse =
         scheduleCreationPort.create(
             Email(payload.doctorEmail),
             payload.date,
@@ -45,49 +45,60 @@ class ScheduleController(
             .map { it.toDTO() }
 
     @GetMapping("/doctor/{doctorEmail}")
-    fun readAllByDoctor(@PathVariable doctorEmail: String): List<ScheduleResponse> =
+    fun readAllByDoctor(
+        @PathVariable doctorEmail: String,
+    ): List<ScheduleResponse> =
         scheduleReadingPort
             .readAllByDoctor(Email(doctorEmail))
             .map { it.toDTO() }
 
     @GetMapping("/patient/{patientEmail}")
-    fun readAllByPatient(@PathVariable patientEmail: String): List<ScheduleResponse> =
+    fun readAllByPatient(
+        @PathVariable patientEmail: String,
+    ): List<ScheduleResponse> =
         scheduleReadingPort
             .readAllByPatient(Email(patientEmail))
             .map { it.toDTO() }
 
     @GetMapping("/doctor/{doctorEmail}/available")
-    fun readAllAvailable(@PathVariable doctorEmail: String): List<ScheduleResponse> =
+    fun readAllAvailable(
+        @PathVariable doctorEmail: String,
+    ): List<ScheduleResponse> =
         scheduleReadingPort
             .readAllAvailableByDoctor(Email(doctorEmail))
             .map { it.toDTO() }
 
     @GetMapping("/doctor/{doctorEmail}/reserved")
-    fun readAllReservedByDoctor(@PathVariable doctorEmail: String): List<ScheduleResponse> =
+    fun readAllReservedByDoctor(
+        @PathVariable doctorEmail: String,
+    ): List<ScheduleResponse> =
         scheduleReadingPort
             .readAllReservedByDoctor(Email(doctorEmail))
             .map { it.toDTO() }
 
     @GetMapping("/{id}")
-    fun readOneById(@PathVariable id: UUID): ScheduleResponse =
+    fun readOneById(
+        @PathVariable id: UUID,
+    ): ScheduleResponse =
         scheduleReadingPort
             .readById(id)
             .toDTO()
 
     @PostMapping("/{id}/reservation")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun reservation(@PathVariable id: UUID, @AuthenticationPrincipal user: UserDetails) {
+    fun reservation(
+        @PathVariable id: UUID,
+        @AuthenticationPrincipal user: UserDetails,
+    ) {
         scheduleReservationPort.reserve(id, Email(user.username))
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    fun cancellationById(@PathVariable id: UUID) {
+    fun cancellationById(
+        @PathVariable id: UUID,
+    ) {
         scheduleCancellationPort
             .cancelById(id)
     }
-
 }
-
-
-

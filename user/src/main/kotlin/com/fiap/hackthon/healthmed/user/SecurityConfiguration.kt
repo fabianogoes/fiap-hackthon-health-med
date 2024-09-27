@@ -17,17 +17,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 class SecurityConfiguration(
     private val authenticationProvider: AuthenticationProvider,
 ) {
-
     @Bean
     fun securityFilterChain(
         http: HttpSecurity,
-        authJwtFilter: AuthJwtFilter
+        authJwtFilter: AuthJwtFilter,
     ): DefaultSecurityFilterChain {
         http
             .csrf { it.disable() }
             .authorizeHttpRequests {
                 it
-                    .requestMatchers( "/api/auth", "api/auth/refresh", "/error", "/health",)
+                    .requestMatchers("/api/auth", "api/auth/refresh", "/error", "/health")
                     .permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/users")
                     .permitAll()

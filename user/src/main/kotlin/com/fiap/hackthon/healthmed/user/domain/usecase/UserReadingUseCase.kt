@@ -9,12 +9,8 @@ import jakarta.inject.Named
 @Named
 class UserReadingUseCase(
     private val userPersistencePort: UserPersistencePort,
-): UserReadingPort {
+) : UserReadingPort {
+    override fun findByEmail(email: String): User? = userPersistencePort.findByEmail(Email(email))
 
-    override fun findByEmail(email: String): User? =
-        userPersistencePort.findByEmail(Email(email))
-
-    override fun findAll(): List<User> =
-        userPersistencePort.findAll()
-
+    override fun findAll(): List<User> = userPersistencePort.findAll()
 }

@@ -21,5 +21,4 @@ class PatientDeletionUseCase(
             ?.let { patientPersistencePort.delete(id) }
             ?: throw PatientNotFoundException(id.toString())
     }
-
 }

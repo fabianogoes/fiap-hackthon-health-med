@@ -17,19 +17,21 @@ data class UserDBO(
     val lastToken: String? = null,
     val lastTokenAt: LocalDateTime? = null,
 ) {
-    fun toEntity(): User = User(
-        email = Email(email),
-        password = password,
-        role = enumValueOf(role),
+    fun toEntity(): User =
+        User(
+            email = Email(email),
+            password = password,
+            role = enumValueOf(role),
+            lastToken = lastToken,
+            lastTokenAt = lastTokenAt,
+        )
+}
+
+fun User.toDBO() =
+    UserDBO(
+        email = this.email.value,
+        password = this.password,
+        role = role.name,
         lastToken = lastToken,
         lastTokenAt = lastTokenAt,
     )
-}
-
-fun User.toDBO() = UserDBO(
-    email = this.email.value,
-    password = this.password,
-    role = role.name,
-    lastToken = lastToken,
-    lastTokenAt = lastTokenAt,
-)

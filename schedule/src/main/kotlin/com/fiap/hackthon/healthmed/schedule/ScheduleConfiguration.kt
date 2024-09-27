@@ -7,9 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.ComponentScan
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = [
-    SharedConfiguration::class,
-    DoctorConfiguration::class,
-    PatientConfiguration::class,
-])
+@ComponentScan(
+    basePackageClasses = [
+        SharedConfiguration::class,
+        DoctorConfiguration::class,
+        PatientConfiguration::class,
+    ],
+)
 class ScheduleConfiguration

@@ -6,9 +6,14 @@ import java.util.UUID
 
 interface DoctorPersistencePort {
     fun create(doctor: Doctor): Doctor
+
     fun readAll(): List<Doctor>
+
     fun readOneById(id: UUID): Doctor?
+
     fun readOneByEmail(email: Email): Doctor?
+
     fun update(doctor: Doctor): Doctor
+
     fun delete(id: UUID)
 }

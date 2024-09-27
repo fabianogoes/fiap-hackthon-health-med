@@ -8,14 +8,16 @@ import com.fiap.hackthon.healthmed.shared.password
 import com.fiap.hackthon.healthmed.user.domain.entity.User
 import java.util.UUID
 
-fun createPatient(): Patient = Patient(
-    id = UUID.randomUUID(),
-    name = faker.name.firstName(),
-    cpf = faker.cpf(),
-    email = faker.email(),
-    user = User(
+fun createPatient(): Patient =
+    Patient(
+        id = UUID.randomUUID(),
+        name = faker.name.firstName(),
+        cpf = faker.cpf(),
         email = faker.email(),
-        password = faker.password(),
-        role = User.Role.DOCTOR_ROLE,
+        user =
+            User(
+                email = faker.email(),
+                password = faker.password(),
+                role = User.Role.DOCTOR_ROLE,
+            ),
     )
-)

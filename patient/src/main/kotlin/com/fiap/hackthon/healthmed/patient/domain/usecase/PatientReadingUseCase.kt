@@ -1,9 +1,9 @@
 package com.fiap.hackthon.healthmed.patient.domain.usecase
 
-import com.fiap.hackthon.healthmed.patient.ports.PatientReadingPort
 import com.fiap.hackthon.healthmed.patient.domain.entity.Patient
 import com.fiap.hackthon.healthmed.patient.domain.exception.PatientNotFoundException
 import com.fiap.hackthon.healthmed.patient.ports.PatientPersistencePort
+import com.fiap.hackthon.healthmed.patient.ports.PatientReadingPort
 import com.fiap.hackthon.healthmed.shared.Email
 import com.fiap.hackthon.healthmed.shared.logger
 import jakarta.inject.Named
@@ -12,7 +12,7 @@ import java.util.UUID
 @Named
 class PatientReadingUseCase(
     private val patientPersistencePort: PatientPersistencePort,
-): PatientReadingPort {
+) : PatientReadingPort {
     private val log = logger<PatientCreationUseCase>()
 
     override fun readAll(): List<Patient> {

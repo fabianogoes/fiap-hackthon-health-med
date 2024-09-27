@@ -10,6 +10,5 @@ data class Patient(
     val name: String,
     val cpf: CPF,
     val email: Email,
-
     val user: User,
 )

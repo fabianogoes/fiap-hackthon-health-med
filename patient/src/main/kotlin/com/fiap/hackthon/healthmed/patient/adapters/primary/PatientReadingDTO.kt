@@ -11,10 +11,11 @@ data class PatientReadResponse(
     val role: String,
 )
 
-fun Patient.toResponseDTO(): PatientReadResponse = PatientReadResponse(
-    id = id,
-    name = name,
-    cpf = cpf.number,
-    email = email.value,
-    role = user.role.name,
-)
+fun Patient.toResponseDTO(): PatientReadResponse =
+    PatientReadResponse(
+        id = id,
+        name = name,
+        cpf = cpf.number,
+        email = email.value,
+        role = user.role.name,
+    )

@@ -21,5 +21,4 @@ class DoctorDeletionUseCase(
             ?.let { doctorPersistencePort.delete(id) }
             ?: throw DoctorNotFoundException(id.toString())
     }
-
 }

@@ -16,13 +16,14 @@ data class ScheduleResponse(
     val states: List<String>,
 )
 
-fun Schedule.toDTO() = ScheduleResponse(
-    id = this.id,
-    doctorEmail = this.slot.doctorEmail.value,
-    patientEmail = this.patientEmail?.value,
-    date = this.slot.date,
-    startTime = this.slot.startTime,
-    endTime = this.slot.endTime,
-    currentState = this.currentState.state.name,
-    states = this.states.map { it.state.name },
-)
+fun Schedule.toDTO() =
+    ScheduleResponse(
+        id = this.id,
+        doctorEmail = this.slot.doctorEmail.value,
+        patientEmail = this.patientEmail?.value,
+        date = this.slot.date,
+        startTime = this.slot.startTime,
+        endTime = this.slot.endTime,
+        currentState = this.currentState.state.name,
+        states = this.states.map { it.state.name },
+    )

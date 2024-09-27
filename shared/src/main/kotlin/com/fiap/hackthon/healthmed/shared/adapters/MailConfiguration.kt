@@ -16,7 +16,6 @@ class MailConfiguration(
     @Value("\${spring.mail.properties.mail.smtp.auth}") private val smtpAuth: Boolean,
     @Value("\${spring.mail.properties.mail.smtp.starttls.enable}") private val smtpStarttls: Boolean,
 ) {
-
     @Bean
     fun javaMailSender(): JavaMailSender {
         val properties = Properties()
@@ -31,5 +30,4 @@ class MailConfiguration(
         mailSender.javaMailProperties = properties
         return mailSender
     }
-
 }

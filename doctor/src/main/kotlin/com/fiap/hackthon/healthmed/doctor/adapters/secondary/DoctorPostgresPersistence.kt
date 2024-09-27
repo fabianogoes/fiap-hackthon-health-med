@@ -13,7 +13,6 @@ class DoctorPostgresPersistence(
     private val doctorRepository: DoctorPostgresRepository,
     private val userPersistencePort: UserPersistencePort,
 ) : DoctorPersistencePort {
-
     override fun create(doctor: Doctor): Doctor =
         doctorRepository
             .save(doctor.toDBO())
@@ -48,6 +47,3 @@ class DoctorPostgresPersistence(
         return toEntity(user)
     }
 }
-
-
-

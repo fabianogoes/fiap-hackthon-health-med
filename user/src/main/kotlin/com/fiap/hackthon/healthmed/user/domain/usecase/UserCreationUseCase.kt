@@ -12,15 +12,18 @@ class UserCreationUseCase(
     private val userPersistence: UserPersistencePort,
     private val encoder: PasswordEncoder,
 ) : CreateUserPort {
-
-    override fun create(email: String, password: String, role: String): User {
-        val user = User(
-            email = Email(email),
-            password = encoder.encode(password),
-            role = enumValueOf(role),
-        )
+    override fun create(
+        email: String,
+        password: String,
+        role: String,
+    ): User {
+        val user =
+            User(
+                email = Email(email),
+                password = encoder.encode(password),
+                role = enumValueOf(role),
+            )
 
         return userPersistence.save(user)
     }
-
 }

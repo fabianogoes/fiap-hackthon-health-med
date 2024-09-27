@@ -11,6 +11,5 @@ data class Doctor(
     val cpf: CPF,
     val email: Email,
     val crm: CRM,
-
     val user: User,
 )

@@ -5,9 +5,9 @@ import com.fiap.hackthon.healthmed.patient.domain.exception.PatientEmailAlreadyE
 import com.fiap.hackthon.healthmed.patient.domain.usecase.PatientCreationUseCase
 import com.fiap.hackthon.healthmed.patient.ports.PatientCreationPort
 import com.fiap.hackthon.healthmed.patient.ports.PatientPersistencePort
-import com.fiap.hackthon.healthmed.shared.faker
-import com.fiap.hackthon.healthmed.shared.email
 import com.fiap.hackthon.healthmed.shared.cpf
+import com.fiap.hackthon.healthmed.shared.email
+import com.fiap.hackthon.healthmed.shared.faker
 import com.fiap.hackthon.healthmed.shared.password
 import com.fiap.hackthon.healthmed.user.domain.entity.User
 import com.fiap.hackthon.healthmed.user.ports.CreateUserPort
@@ -20,14 +20,14 @@ import org.junit.jupiter.api.assertThrows
 import java.util.UUID
 
 class PatientCreationUseCaseTest {
-
     private val patientPersistencePort: PatientPersistencePort = mockk()
     private val userCreateUserPort: CreateUserPort = mockk()
 
-    private val patientCreationPort: PatientCreationPort = PatientCreationUseCase(
-        patientPersistencePort,
-        userCreateUserPort,
-    )
+    private val patientCreationPort: PatientCreationPort =
+        PatientCreationUseCase(
+            patientPersistencePort,
+            userCreateUserPort,
+        )
 
     @Test
     fun `it should create a new Patient`() {
@@ -45,8 +45,9 @@ class PatientCreationUseCaseTest {
         every { patientPersistencePort.readOneByEmail(email) } returns null
 
         // When
-        val actualPatient = patientCreationPort
-            .doCreate(name, cpf.number, email.value, password)
+        val actualPatient =
+            patientCreationPort
+                .doCreate(name, cpf.number, email.value, password)
 
         // Then
         verify(exactly = 1) { patientPersistencePort.create(any()) }
@@ -80,5 +81,4 @@ class PatientCreationUseCaseTest {
         // Then
         verify(exactly = 1) { patientPersistencePort.readOneByEmail(email) }
     }
-
 }

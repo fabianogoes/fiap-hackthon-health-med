@@ -6,6 +6,8 @@ import java.util.UUID
 
 interface PatientReadingPort {
     fun readAll(): List<Patient>
+
     fun readOne(id: UUID): Patient
+
     fun readOneByEmail(email: Email): Patient
 }

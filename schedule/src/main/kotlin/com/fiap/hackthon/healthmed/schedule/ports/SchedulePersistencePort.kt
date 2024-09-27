@@ -7,10 +7,16 @@ import java.util.UUID
 
 interface SchedulePersistencePort {
     fun save(schedule: Schedule): Schedule
+
     fun readAll(): List<Schedule>
+
     fun readAllByDoctor(doctorEmail: Email): List<Schedule>
+
     fun readAllByPatient(patientEmail: Email): List<Schedule>
+
     fun readById(id: UUID): Schedule?
+
     fun delete(id: UUID)
+
     fun existsBySlot(slot: Slot): Boolean
 }

@@ -18,28 +18,29 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
 class ScheduleReservationUseCaseTest {
-
     private val schedulePersistencePort: SchedulePersistencePort = mockk()
     private val doctorPersistencePort: DoctorPersistencePort = mockk()
     private val patientPersistencePort: PatientPersistencePort = mockk()
     private val mailPort: MailPort = mockk()
 
-    private val scheduleReservationPort: ScheduleReservationPort = ScheduleReservationUseCase(
-        schedulePersistencePort,
-        doctorPersistencePort,
-        patientPersistencePort,
-        mailPort,
-    )
+    private val scheduleReservationPort: ScheduleReservationPort =
+        ScheduleReservationUseCase(
+            schedulePersistencePort,
+            doctorPersistencePort,
+            patientPersistencePort,
+            mailPort,
+        )
 
     @Test
     fun `it should reserve successfully`() {
         // Given
         val expectedDoctor = createDoctor()
         val expectedPatient = createPatient()
-        val expectedSchedule = createSchedule(
-            doctorEmail = expectedDoctor.email,
-            patientEmail = expectedPatient.email,
-        )
+        val expectedSchedule =
+            createSchedule(
+                doctorEmail = expectedDoctor.email,
+                patientEmail = expectedPatient.email,
+            )
         every { schedulePersistencePort.readById(expectedSchedule.id) } returns expectedSchedule
         every { doctorPersistencePort.readOneByEmail(expectedDoctor.email) } returns expectedDoctor
         every { patientPersistencePort.readOneByEmail(expectedPatient.email) } returns expectedPatient
@@ -62,10 +63,11 @@ class ScheduleReservationUseCaseTest {
         // Given
         val expectedDoctor = createDoctor()
         val expectedPatient = createPatient()
-        val expectedSchedule = createSchedule(
-            doctorEmail = expectedDoctor.email,
-            patientEmail = expectedPatient.email,
-        )
+        val expectedSchedule =
+            createSchedule(
+                doctorEmail = expectedDoctor.email,
+                patientEmail = expectedPatient.email,
+            )
         every { schedulePersistencePort.readById(expectedSchedule.id) } returns null
 
         // When
@@ -80,10 +82,11 @@ class ScheduleReservationUseCaseTest {
         // Given
         val expectedDoctor = createDoctor()
         val expectedPatient = createPatient()
-        val expectedSchedule = createSchedule(
-            doctorEmail = expectedDoctor.email,
-            patientEmail = expectedPatient.email,
-        )
+        val expectedSchedule =
+            createSchedule(
+                doctorEmail = expectedDoctor.email,
+                patientEmail = expectedPatient.email,
+            )
         every { schedulePersistencePort.readById(expectedSchedule.id) } returns expectedSchedule
         every { doctorPersistencePort.readOneByEmail(expectedDoctor.email) } returns null
 
@@ -100,10 +103,11 @@ class ScheduleReservationUseCaseTest {
         // Given
         val expectedDoctor = createDoctor()
         val expectedPatient = createPatient()
-        val expectedSchedule = createSchedule(
-            doctorEmail = expectedDoctor.email,
-            patientEmail = expectedPatient.email,
-        )
+        val expectedSchedule =
+            createSchedule(
+                doctorEmail = expectedDoctor.email,
+                patientEmail = expectedPatient.email,
+            )
         every { schedulePersistencePort.readById(expectedSchedule.id) } returns expectedSchedule
         every { doctorPersistencePort.readOneByEmail(expectedDoctor.email) } returns expectedDoctor
         every { patientPersistencePort.readOneByEmail(expectedPatient.email) } returns null
@@ -122,10 +126,11 @@ class ScheduleReservationUseCaseTest {
         // Given
         val expectedDoctor = createDoctor()
         val expectedPatient = createPatient()
-        val expectedSchedule = createSchedule(
-            doctorEmail = expectedDoctor.email,
-            patientEmail = expectedPatient.email,
-        )
+        val expectedSchedule =
+            createSchedule(
+                doctorEmail = expectedDoctor.email,
+                patientEmail = expectedPatient.email,
+            )
         every { schedulePersistencePort.readById(expectedSchedule.id) } returns expectedSchedule
         every { doctorPersistencePort.readOneByEmail(expectedDoctor.email) } returns expectedDoctor
         every { patientPersistencePort.readOneByEmail(expectedPatient.email) } returns expectedPatient

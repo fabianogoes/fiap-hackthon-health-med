@@ -4,5 +4,8 @@ import com.fiap.hackthon.healthmed.shared.Email
 import java.util.UUID
 
 interface ScheduleReservationPort {
-    fun reserve(id: UUID, patientEmail: Email)
+    fun reserve(
+        id: UUID,
+        patientEmail: Email,
+    )
 }

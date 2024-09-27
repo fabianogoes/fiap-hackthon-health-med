@@ -4,26 +4,32 @@ import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 buildscript {
 	ext {
-		apacheCommonsVersion    = "2.16.1"
+		kotlinVersion = "1.9.24"
+		springBootVersion = "3.3.2"
+		springDependencyManagement = "1.1.6"
+		apacheCommonsVersion = "2.16.1"
 		jakartaInjectApiVersion = "2.0.1"
-		JwtVersion				= "0.12.3"
-		assertjVersion			= "3.26.3"
-		mockkVersion			= "1.13.12"
-		springmockkVersion		= "4.0.2"
-		kotlinFakerVersion		= "1.9.0"
+		JwtVersion = "0.12.3"
+		assertjVersion = "3.26.3"
+		mockkVersion = "1.13.12"
+		springmockkVersion = "4.0.2"
+		kotlinFakerVersion = "1.9.0"
+		ktlint = "12.1.1"
 	}
 }
 
 plugins {
-	id "org.jetbrains.kotlin.jvm" version "1.9.24" apply false
-	id "org.jetbrains.kotlin.plugin.spring" version "1.9.24" apply false
-	id "org.springframework.boot" version "3.3.2" apply false
-	id "io.spring.dependency-management" version "1.1.6" apply false
-	id "org.jetbrains.kotlin.plugin.jpa" version "1.9.24" apply false
+	id("org.jetbrains.kotlin.jvm") version "$kotlinVersion" apply false
+	id("org.jetbrains.kotlin.plugin.spring") version "$kotlinVersion" apply false
+	id("org.springframework.boot") version "$springBootVersion" apply false
+	id("io.spring.dependency-management") version "$springDependencyManagement" apply false
+	id("org.jetbrains.kotlin.plugin.jpa") version "$kotlinVersion" apply false
+	id("org.jlleitschuh.gradle.ktlint") version "$ktlint" apply false
 }
 
 allprojects {
 	repositories {
+		mavenLocal()
 		mavenCentral()
 	}
 }
@@ -38,6 +44,7 @@ subprojects {
 	apply plugin: "org.springframework.boot"
 	apply plugin: "io.spring.dependency-management"
 	apply plugin: "org.jetbrains.kotlin.plugin.jpa"
+	apply plugin: "org.jlleitschuh.gradle.ktlint"
 
 	sourceCompatibility = JavaVersion.VERSION_17
 	targetCompatibility = JavaVersion.VERSION_17
@@ -55,6 +62,7 @@ subprojects {
 		implementation "org.springframework.boot:spring-boot-starter-data-jpa"
 		implementation "org.springframework.boot:spring-boot-starter-security"
 		implementation "org.springframework.boot:spring-boot-starter-validation"
+		implementation "io.github.serpro69:kotlin-faker:$kotlinFakerVersion"
 		runtimeOnly "org.postgresql:postgresql"
 
 		testImplementation "org.springframework.boot:spring-boot-starter-test"
@@ -63,7 +71,6 @@ subprojects {
 		testImplementation "org.springframework.security:spring-security-test"
 		testImplementation "org.assertj:assertj-core:$assertjVersion"
 		testImplementation "com.ninja-squad:springmockk:$springmockkVersion"
-		implementation "io.github.serpro69:kotlin-faker:$kotlinFakerVersion"
 		testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 	}
 

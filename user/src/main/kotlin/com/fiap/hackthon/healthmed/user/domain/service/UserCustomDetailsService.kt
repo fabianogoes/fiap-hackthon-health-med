@@ -12,18 +12,17 @@ typealias ApplicationUser = com.fiap.hackthon.healthmed.user.domain.entity.User
 
 @Service
 class CustomUserDetailsService(
-  private val userPersistencePort: UserPersistencePort,
+    private val userPersistencePort: UserPersistencePort,
 ) : UserDetailsService {
+    override fun loadUserByUsername(username: String): UserDetails =
+        userPersistencePort.findByEmail(Email(username))
+            ?.mapToUserDetails()
+            ?: throw UsernameNotFoundException("Not found!")
 
-  override fun loadUserByUsername(username: String): UserDetails =
-    userPersistencePort.findByEmail(Email(username))
-      ?.mapToUserDetails()
-      ?: throw UsernameNotFoundException("Not found!")
-
-  private fun ApplicationUser.mapToUserDetails(): UserDetails =
-    User.builder()
-      .username(this.email.value)
-      .password(this.password)
-      .roles(this.role.name)
-      .build()
+    private fun ApplicationUser.mapToUserDetails(): UserDetails =
+        User.builder()
+            .username(this.email.value)
+            .password(this.password)
+            .roles(this.role.name)
+            .build()
 }

@@ -8,7 +8,6 @@ import java.util.TimeZone
 
 @Suppress("unused")
 object SharedDateUtils {
-
     private const val BR_TIMEZONE_ID = "America/Sao_Paulo"
 
     private val defaultLocalDateTimeFormatter: DateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")
@@ -17,29 +16,16 @@ object SharedDateUtils {
 
     fun getBrTimeZone(): TimeZone = TimeZone.getTimeZone(BR_TIMEZONE_ID)
 
-    fun LocalDateTime.toStringFormatted(
-        formatter: DateTimeFormatter = defaultLocalDateTimeFormatter
-    ): String = formatter.format(this)
+    fun LocalDateTime.toStringFormatted(formatter: DateTimeFormatter = defaultLocalDateTimeFormatter): String = formatter.format(this)
 
-    fun LocalDate.toStringFormatted(
-        formatter: DateTimeFormatter = defaultLocalDateFormatter
-    ): String = formatter.format(this)
+    fun LocalDate.toStringFormatted(formatter: DateTimeFormatter = defaultLocalDateFormatter): String = formatter.format(this)
 
-    fun LocalTime.toStringFormatted(
-        formatter: DateTimeFormatter = defaultLocalTimeFormatter
-    ): String = formatter.format(this)
+    fun LocalTime.toStringFormatted(formatter: DateTimeFormatter = defaultLocalTimeFormatter): String = formatter.format(this)
 
-    fun String.toLocalDateTime(
-        formatter: DateTimeFormatter = defaultLocalDateTimeFormatter
-    ): LocalDateTime = LocalDateTime.parse(this, formatter)
+    fun String.toLocalDateTime(formatter: DateTimeFormatter = defaultLocalDateTimeFormatter): LocalDateTime =
+        LocalDateTime.parse(this, formatter)
 
-    fun String.toLocalDate(
-        formatter: DateTimeFormatter = defaultLocalDateFormatter
-    ): LocalDate = LocalDate.parse(this, formatter)
+    fun String.toLocalDate(formatter: DateTimeFormatter = defaultLocalDateFormatter): LocalDate = LocalDate.parse(this, formatter)
 
-    fun String.toLocalTime(
-        formatter: DateTimeFormatter = defaultLocalTimeFormatter
-    ): LocalDate = LocalDate.parse(this, formatter)
-
-
+    fun String.toLocalTime(formatter: DateTimeFormatter = defaultLocalTimeFormatter): LocalDate = LocalDate.parse(this, formatter)
 }

@@ -15,11 +15,12 @@ fun createSchedule(
     patientEmail: Email? = null,
 ) = Schedule(
     id = UUID.randomUUID(),
-    slot = Slot(
-        doctorEmail = doctorEmail,
-        date = date,
-        startTime = startTime,
-        endTime = endTime,
-    ),
+    slot =
+        Slot(
+            doctorEmail = doctorEmail,
+            date = date,
+            startTime = startTime,
+            endTime = endTime,
+        ),
     patientEmail = patientEmail,
 )

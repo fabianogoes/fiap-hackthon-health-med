@@ -5,14 +5,14 @@ import org.springframework.stereotype.Component
 
 @Component
 class RefreshTokenRepository {
+    private val tokens = mutableMapOf<String, UserDetails>()
 
-  private val tokens = mutableMapOf<String, UserDetails>()
+    fun findUserDetailsByToken(token: String): UserDetails? = tokens[token]
 
-  fun findUserDetailsByToken(token: String) : UserDetails? =
-    tokens[token]
-
-  fun save(token: String, userDetails: UserDetails) {
-    tokens[token] = userDetails
-  }
-
+    fun save(
+        token: String,
+        userDetails: UserDetails,
+    ) {
+        tokens[token] = userDetails
+    }
 }

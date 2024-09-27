@@ -12,11 +12,12 @@ data class DoctorReadResponse(
     val userRole: String,
 )
 
-fun Doctor.toResponseDTO(): DoctorReadResponse = DoctorReadResponse(
-    id = id,
-    name = name,
-    cpf = cpf.number,
-    email = email.value,
-    crm = crm.number,
-    userRole = user.role.name,
-)
+fun Doctor.toResponseDTO(): DoctorReadResponse =
+    DoctorReadResponse(
+        id = id,
+        name = name,
+        cpf = cpf.number,
+        email = email.value,
+        crm = crm.number,
+        userRole = user.role.name,
+    )

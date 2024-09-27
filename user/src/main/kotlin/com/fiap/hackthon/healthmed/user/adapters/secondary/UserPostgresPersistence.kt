@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository
 class UserPostgresPersistence(
     private val userRepository: UserPostgresRepository,
 ) : UserPersistencePort {
-
     override fun save(user: User): User =
         userRepository
             .save(user.toDBO())
@@ -29,5 +28,4 @@ class UserPostgresPersistence(
     override fun deleteByEmail(email: Email) {
         userRepository.deleteById(email.value)
     }
-
 }

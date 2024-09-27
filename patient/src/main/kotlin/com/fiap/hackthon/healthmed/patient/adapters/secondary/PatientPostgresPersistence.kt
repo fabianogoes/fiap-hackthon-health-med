@@ -13,7 +13,6 @@ class PatientPostgresPersistence(
     private val repository: PatientPostgresRepository,
     private val userPersistencePort: UserPersistencePort,
 ) : PatientPersistencePort {
-
     override fun create(patient: Patient): Patient =
         repository
             .save(patient.toDBO())
@@ -30,8 +29,8 @@ class PatientPostgresPersistence(
             ?.toEntityWithUser()
 
     override fun readOneByEmail(email: Email): Patient? =
-        repository.
-            findByEmail(email.value)
+        repository
+            .findByEmail(email.value)
             ?.toEntityWithUser()
 
     override fun update(patient: Patient): Patient =
@@ -47,5 +46,4 @@ class PatientPostgresPersistence(
         val user = userPersistencePort.findByEmail(Email(email))!!
         return toEntity(user)
     }
-
 }

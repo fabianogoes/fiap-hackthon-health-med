@@ -2,8 +2,8 @@ package com.fiap.hackthon.healthmed.doctor.domain.usecase
 
 import com.fiap.hackthon.healthmed.doctor.domain.entity.Doctor
 import com.fiap.hackthon.healthmed.doctor.domain.exception.DoctorNotFoundException
-import com.fiap.hackthon.healthmed.doctor.ports.DoctorUpdatePort
 import com.fiap.hackthon.healthmed.doctor.ports.DoctorPersistencePort
+import com.fiap.hackthon.healthmed.doctor.ports.DoctorUpdatePort
 import com.fiap.hackthon.healthmed.shared.Email
 import com.fiap.hackthon.healthmed.shared.logger
 import jakarta.inject.Named
@@ -15,7 +15,11 @@ class DoctorUpdateUseCase(
 ) : DoctorUpdatePort {
     private val log = logger<DoctorUpdateUseCase>()
 
-    override fun doUpdate(id: UUID, name: String, email: String): Doctor {
+    override fun doUpdate(
+        id: UUID,
+        name: String,
+        email: String,
+    ): Doctor {
         log.info("Updating Doctor id: $id, name: $name and email: $email")
 
         return doctorPersistencePort
@@ -23,5 +27,4 @@ class DoctorUpdateUseCase(
             ?.let { doctorPersistencePort.update(it.copy(name = name, email = Email(email))) }
             ?: throw DoctorNotFoundException(id.toString())
     }
-
 }

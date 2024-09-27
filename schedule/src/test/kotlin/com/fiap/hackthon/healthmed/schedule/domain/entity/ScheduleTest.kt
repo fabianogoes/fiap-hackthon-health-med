@@ -10,16 +10,17 @@ import java.time.LocalTime
 import java.util.UUID
 
 class ScheduleTest {
-
-    private val schedule = Schedule(
-        id = UUID.randomUUID(),
-        slot = Slot(
-            doctorEmail = Email("doctorwho@test.com"),
-            date = LocalDate.now(),
-            startTime = LocalTime.of(10, 0),
-            endTime = LocalTime.of(11, 0),
+    private val schedule =
+        Schedule(
+            id = UUID.randomUUID(),
+            slot =
+                Slot(
+                    doctorEmail = Email("doctorwho@test.com"),
+                    date = LocalDate.now(),
+                    startTime = LocalTime.of(10, 0),
+                    endTime = LocalTime.of(11, 0),
+                ),
         )
-    )
 
     @Order(1)
     @Test
@@ -62,5 +63,4 @@ class ScheduleTest {
         assertThat(schedule.currentState.state).isEqualTo(State.MAIL_ERROR)
         assertThat(schedule.isMailError()).isTrue()
     }
-
 }

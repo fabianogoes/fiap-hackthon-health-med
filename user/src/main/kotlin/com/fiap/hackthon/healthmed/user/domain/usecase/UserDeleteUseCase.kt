@@ -9,9 +9,7 @@ import jakarta.inject.Named
 class UserDeleteUseCase(
     private val userPersistencePort: UserPersistencePort,
 ) : UserDeletePort {
-
     override fun deleteByEmail(email: String) {
         userPersistencePort.deleteByEmail(Email(email))
     }
-
 }
