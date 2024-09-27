@@ -7,6 +7,7 @@ import com.fiap.hackthon.healthmed.patient.domain.exception.PatientNotFoundExcep
 import com.fiap.hackthon.healthmed.patient.domain.faker.createPatient
 import com.fiap.hackthon.healthmed.patient.ports.PatientPersistencePort
 import com.fiap.hackthon.healthmed.schedule.domain.exception.ScheduleNotFoundException
+import com.fiap.hackthon.healthmed.schedule.domain.exception.ScheduleStateCanNotBeCanceledException
 import com.fiap.hackthon.healthmed.schedule.domain.faker.createSchedule
 import com.fiap.hackthon.healthmed.schedule.ports.ScheduleCancellationPort
 import com.fiap.hackthon.healthmed.schedule.ports.SchedulePersistencePort
@@ -57,6 +58,29 @@ class ScheduleCancellationUseCaseTest {
         verify(exactly = 1) { patientPersistencePort.readOneByEmail(expectedPatient.email) }
         verify(exactly = 1) { schedulePersistencePort.save(any()) }
         verify(exactly = 1) { mailPort.sendEmail(any(), any(), any(), any()) }
+    }
+
+    @Test
+    fun `it should not cancel when can not be cancel`() {
+        // Given
+        val expectedDoctor = createDoctor()
+        val expectedPatient = createPatient()
+        val expectedSchedule =
+            createSchedule(
+                doctorEmail = expectedDoctor.email,
+                patientEmail = expectedPatient.email,
+            ).scheduled()
+        every { schedulePersistencePort.readById(expectedSchedule.id) } returns expectedSchedule
+
+        // When
+        assertThrows<ScheduleStateCanNotBeCanceledException> { scheduleCancellationPort.cancelById(expectedSchedule.id) }
+
+        // Then
+        verify(exactly = 1) { schedulePersistencePort.readById(expectedSchedule.id) }
+        verify(exactly = 0) { doctorPersistencePort.readOneByEmail(expectedDoctor.email) }
+        verify(exactly = 0) { patientPersistencePort.readOneByEmail(expectedPatient.email) }
+        verify(exactly = 0) { schedulePersistencePort.save(any()) }
+        verify(exactly = 0) { mailPort.sendEmail(any(), any(), any(), any()) }
     }
 
     @Test

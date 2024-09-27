@@ -6,6 +6,7 @@ import com.fiap.hackthon.healthmed.doctor.ports.DoctorPersistencePort
 import com.fiap.hackthon.healthmed.patient.domain.exception.PatientNotFoundException
 import com.fiap.hackthon.healthmed.patient.domain.faker.createPatient
 import com.fiap.hackthon.healthmed.patient.ports.PatientPersistencePort
+import com.fiap.hackthon.healthmed.schedule.domain.exception.ScheduleAlreadyReservedException
 import com.fiap.hackthon.healthmed.schedule.domain.exception.ScheduleNotFoundException
 import com.fiap.hackthon.healthmed.schedule.domain.faker.createSchedule
 import com.fiap.hackthon.healthmed.schedule.ports.SchedulePersistencePort
@@ -56,6 +57,28 @@ class ScheduleReservationUseCaseTest {
         verify(exactly = 1) { patientPersistencePort.readOneByEmail(expectedPatient.email) }
         verify(exactly = 1) { schedulePersistencePort.save(any()) }
         verify(exactly = 1) { mailPort.sendEmail(any(), any(), any(), any()) }
+    }
+
+    @Test
+    fun `it should not reserve when cannot be reserved`() {
+        // Given
+        val expectedDoctor = createDoctor()
+        val expectedPatient = createPatient()
+        val expectedSchedule = createSchedule(
+            doctorEmail = expectedDoctor.email,
+            patientEmail = expectedPatient.email,
+        ).reserved()
+        every { schedulePersistencePort.readById(expectedSchedule.id) } returns expectedSchedule
+
+        // When
+        assertThrows<ScheduleAlreadyReservedException> { scheduleReservationPort.reserve(expectedSchedule.id, expectedPatient.email) }
+
+        // Then
+        verify(exactly = 1) { schedulePersistencePort.readById(expectedSchedule.id) }
+        verify(exactly = 0) { doctorPersistencePort.readOneByEmail(expectedDoctor.email) }
+        verify(exactly = 0) { patientPersistencePort.readOneByEmail(expectedPatient.email) }
+        verify(exactly = 0) { schedulePersistencePort.save(any()) }
+        verify(exactly = 0) { mailPort.sendEmail(any(), any(), any(), any()) }
     }
 
     @Test

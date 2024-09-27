@@ -80,19 +80,19 @@ jobs:
       - name: Upload JaCoCo coverage report - Schedule
         uses: actions/upload-artifact@v4
         with:
-          name: jacoco-report
+          name: jacoco-report-schedule
           path: schedule/build/reports/jacoco/
 
       - name: Upload JaCoCo coverage report - Doctor
         uses: actions/upload-artifact@v4
         with:
-          name: jacoco-report
+          name: jacoco-report-doctor
           path: doctor/build/reports/jacoco/
 
       - name: Upload JaCoCo coverage report - Patient
         uses: actions/upload-artifact@v4
         with:
-          name: jacoco-report
+          name: jacoco-report-patient
           path: patient/build/reports/jacoco/
 
       - name: Add coverage to PR
