@@ -40,8 +40,8 @@ jobs:
           jacoco-csv-file: schedule/build/reports/jacoco/test/jacocoTestReport.csv
           coverage-badge-filename: jacoco-schedule.svg
           branches-badge-filename: branches-schedule.svg
-          coverage-label: coverage (module Schedule)
-          branches-label: branches (module Schedule)
+          coverage-label: coverage module Schedule
+          branches-label: branches module Schedule
           workflow-summary-heading: Module Schedule JaCoCo Test Coverage Summary
 
       - name: jacoco-badge-generator-doctor
@@ -52,8 +52,8 @@ jobs:
           jacoco-csv-file: doctor/build/reports/jacoco/test/jacocoTestReport.csv
           coverage-badge-filename: jacoco-doctor.svg
           branches-badge-filename: branches-doctor.svg
-          coverage-label: coverage (module Doctor)
-          branches-label: branches (module Doctor)
+          coverage-label: coverage module Doctor
+          branches-label: branches module Doctor
           workflow-summary-heading: Module Doctor JaCoCo Test Coverage Summary
 
       - name: jacoco-badge-generator-patient
@@ -64,8 +64,8 @@ jobs:
           jacoco-csv-file: patient/build/reports/jacoco/test/jacocoTestReport.csv
           coverage-badge-filename: jacoco-patient.svg
           branches-badge-filename: branches-patient.svg
-          coverage-label: coverage (module Patient)
-          branches-label: branches (module Patient)
+          coverage-label: coverage module Patient
+          branches-label: branches module Patient
           workflow-summary-heading: Module Patient JaCoCo Test Coverage Summary
 
       - name: Log coverage percentage
@@ -80,11 +80,23 @@ jobs:
           message: 'commit badge'
           add: '*.svg'
 
-      - name: Upload JaCoCo coverage report
+      - name: Upload JaCoCo coverage report - Schedule
         uses: actions/upload-artifact@v4
         with:
           name: jacoco-report
           path: schedule/build/reports/jacoco/
+
+      - name: Upload JaCoCo coverage report - Doctor
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: doctor/build/reports/jacoco/
+
+      - name: Upload JaCoCo coverage report - Patient
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-report
+          path: patient/build/reports/jacoco/
 
       - name: Add coverage to PR
         id: jacoco
