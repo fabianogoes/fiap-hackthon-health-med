@@ -1,5 +1,6 @@
 # FIAP - Hackthon Health&Med
 
+[![CI](https://github.com/fabianogoes/fiap-hackthon-health-med/actions/workflows/ci.yml/badge.svg)](https://github.com/fabianogoes/fiap-hackthon-health-med/actions/workflows/ci.yml)
 [![Coverage Schedule](.github/badges/jacoco-schedule.svg)](https://github.com/fabianogoes/fiap-hackthon-health-med/actions/workflows/ci.yml)
 [![Coverage Doctor](.github/badges/jacoco-doctor.svg)](https://github.com/fabianogoes/fiap-hackthon-health-med/actions/workflows/ci.yml)
 [![Coverage Patient](.github/badges/jacoco-patient.svg)](https://github.com/fabianogoes/fiap-hackthon-health-med/actions/workflows/ci.yml)

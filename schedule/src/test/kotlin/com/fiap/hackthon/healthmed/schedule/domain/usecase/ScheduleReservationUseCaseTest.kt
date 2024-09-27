@@ -64,10 +64,11 @@ class ScheduleReservationUseCaseTest {
         // Given
         val expectedDoctor = createDoctor()
         val expectedPatient = createPatient()
-        val expectedSchedule = createSchedule(
-            doctorEmail = expectedDoctor.email,
-            patientEmail = expectedPatient.email,
-        ).reserved()
+        val expectedSchedule =
+            createSchedule(
+                doctorEmail = expectedDoctor.email,
+                patientEmail = expectedPatient.email,
+            ).reserved()
         every { schedulePersistencePort.readById(expectedSchedule.id) } returns expectedSchedule
 
         // When
