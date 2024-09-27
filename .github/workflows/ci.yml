@@ -41,7 +41,6 @@ jobs:
           coverage-badge-filename: jacoco-schedule.svg
           branches-badge-filename: branches-schedule.svg
           coverage-label: coverage module Schedule
-          branches-label: branches module Schedule
           workflow-summary-heading: Module Schedule JaCoCo Test Coverage Summary
 
       - name: jacoco-badge-generator-doctor
@@ -53,7 +52,6 @@ jobs:
           coverage-badge-filename: jacoco-doctor.svg
           branches-badge-filename: branches-doctor.svg
           coverage-label: coverage module Doctor
-          branches-label: branches module Doctor
           workflow-summary-heading: Module Doctor JaCoCo Test Coverage Summary
 
       - name: jacoco-badge-generator-patient
@@ -65,7 +63,6 @@ jobs:
           coverage-badge-filename: jacoco-patient.svg
           branches-badge-filename: branches-patient.svg
           coverage-label: coverage module Patient
-          branches-label: branches module Patient
           workflow-summary-heading: Module Patient JaCoCo Test Coverage Summary
 
       - name: Log coverage percentage
