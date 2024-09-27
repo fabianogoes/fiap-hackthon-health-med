@@ -37,7 +37,21 @@ jobs:
         with:
           generate-branches-badge: true
           jacoco-csv-file: schedule/build/reports/jacoco/test/jacocoTestReport.csv
-          coverage-badge-filename: jacoco.svg
+          coverage-badge-filename: jacoco-schedule.svg
+
+      - name: jacoco-badge-generator-doctor
+        uses: cicirello/jacoco-badge-generator@v2.11.0
+        with:
+          generate-branches-badge: true
+          jacoco-csv-file: doctor/build/reports/jacoco/test/jacocoTestReport.csv
+          coverage-badge-filename: jacoco-doctor.svg
+
+      - name: jacoco-badge-generator-doctor
+        uses: cicirello/jacoco-badge-generator@v2.11.0
+        with:
+          generate-branches-badge: true
+          jacoco-csv-file: patient/build/reports/jacoco/test/jacocoTestReport.csv
+          coverage-badge-filename: jacoco-patient.svg
 
       - name: Log coverage percentage
         run: |

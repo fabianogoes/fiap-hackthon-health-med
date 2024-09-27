@@ -48,7 +48,6 @@ subprojects {
 	apply plugin: "io.spring.dependency-management"
 	apply plugin: "org.jetbrains.kotlin.plugin.jpa"
 	apply plugin: "org.jlleitschuh.gradle.ktlint"
-//	apply plugin: "org.sonarqube"
 	apply plugin: "jacoco"
 
 	sourceCompatibility = JavaVersion.VERSION_17
@@ -118,14 +117,6 @@ subprojects {
 			html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
 		}
 	}
-
-//	sonar {
-//		properties {
-//			property "sonar.projectKey", "fabianogoes_fiap-hackthon-health-med"
-//			property "sonar.organization", "fabianogoes"
-//			property "sonar.host.url", "https://sonarcloud.io"
-//		}
-//	}
 
 	tasks.withType(KotlinCompile).configureEach {
 		compilerOptions {
