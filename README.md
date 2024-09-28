@@ -56,6 +56,7 @@ O objetivo do **Hackathon** é a entrega de um produto de MVP desenvolvido e que
 - [Hexagonal architecture](https://alistair.cockburn.us/hexagonal-architecture/) `pattern`
 - [The Dependency Inversion Principle (DIP)](https://martinfowler.com/articles/dipInTheWild.html) `pattern`
 - [Optimistic Locking in JPA](https://www.baeldung.com/jpa-optimistic-locking)  `concurrency`
+- [Spring Security](https://spring.io/projects/spring-security) com [JWT](https://jwt.io/) `security`
 
 
 ## Importante 

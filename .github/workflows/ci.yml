@@ -1,4 +1,4 @@
-name: CI
+name: CI/CD
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
 env:
   DOCKER_IMAGE: health-med-api:latest
   JAR_PATH: app/build/libs/app-0.0.1-SNAPSHOT.jar
+  EKS_DIRECTORY: .infra/kubernetes/
 
 jobs:
   test:
@@ -173,3 +174,51 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE }}
+
+  deploy:
+    name: Deploy Kubernetes
+    if: false
+    runs-on: ubuntu-latest
+    needs: docker
+    permissions:
+      packages: write
+      contents: write
+      attestations: write
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials for GitHub Actions
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-region: ${{ secrets.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+
+      - name: AWS get-caller-identity
+        run: |
+          aws sts get-caller-identity
+
+      - name: Set up Kubectl
+        uses: azure/k8s-set-context@v1
+        with:
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+
+      - name: EKS apply secrets
+        run: |
+          ls -la 
+          kubectl apply -f ${{ env.EKS_DIRECTORY }}secrets.yaml
+
+      - name: EKS apply deployment
+        run: |
+          kubectl delete -f ${{ env.EKS_DIRECTORY }}deployment.yaml
+          kubectl apply -f ${{ env.EKS_DIRECTORY }}deployment.yaml
+
+      - name: EKS apply hpa
+        run: |
+          kubectl apply -f ${{ env.EKS_DIRECTORY }}hpa.yaml
+
+      - name: EKS apply service
+        run: |
+          kubectl apply -f ${{ env.EKS_DIRECTORY }}service.yaml

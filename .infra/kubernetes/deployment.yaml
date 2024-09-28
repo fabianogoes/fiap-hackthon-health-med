@@ -1,0 +1,101 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: health-med-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: health-med-api
+  template:
+    metadata:
+      labels:
+        app: health-med-api
+    spec:
+      containers:
+        - name: health-med-api
+          image: fabianogoes/health-med-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 3
+            initialDelaySeconds: 20
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            periodSeconds: 10
+            failureThreshold: 5
+            initialDelaySeconds: 3
+          resources:
+            requests:
+              cpu: 1m
+          envFrom:
+            - secretRef:
+                name: health-med-secret
+          env:
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: health-med-secret
+                  key: POSTGRES_HOST
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: health-med-secret
+                  key: POSTGRES_DB
+            - name: POSTGRES_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: health-med-secret
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: health-med-secret
+                  key: POSTGRES_PASSWORD
+            - name: TOKEN_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: health-med-secret
+                  key: TOKEN_SECRET
+            - name: CRYPTO_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: health-med-secret
+                  key: CRYPTO_KEY
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: health-med-secret
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: health-med-secret
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: AWS_SESSION_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: health-med-secret
+                  key: AWS_SESSION_TOKEN
+            - name: AWS_ENDPOINT
+              value: https://sqs.us-east-1.amazonaws.com
+            - name: AWS_REGION
+              value: us-east-1
+            - name: POSTGRES_PORT
+              value: "5432"
+            - name: APP_NAME
+              value: health-med-api
+            - name: APP_ENV
+              value: "production"
+            - name: APP_PORT
+              value: ":8080"
+            - name: API_VERSION
+              value: "5.0"
+      restartPolicy: Always
