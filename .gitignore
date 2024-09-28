@@ -42,3 +42,13 @@ out/
 
 *.hprof
 /.env
+.infra/terraform/cluster-eks/.terraform.lock.hcl
+.infra/terraform/cluster-eks/.terraform.tfstate.lock.info
+.infra/terraform/cluster-eks/terraform.tfstate
+.infra/terraform/cluster-eks/.terraform/providers/registry.terraform.io/hashicorp/aws/5.69.0/linux_amd64/terraform-provider-aws_v5.69.0_x5
+.infra/terraform/rds-postgres/.terraform.lock.hcl
+.infra/terraform/rds-postgres/terraform.tfstate
+.infra/terraform/rds-postgres/terraform.tfstate.backup
+.infra/terraform/rds-postgres/.terraform/providers/registry.terraform.io/hashicorp/aws/5.69.0/linux_amd64/LICENSE.txt
+.infra/terraform/cluster-eks/.terraform/providers/registry.terraform.io/hashicorp/aws/5.69.0/linux_amd64/LICENSE.txt
+.infra/terraform/rds-postgres/.terraform/providers/registry.terraform.io/hashicorp/aws/5.69.0/linux_amd64/terraform-provider-aws_v5.69.0_x5

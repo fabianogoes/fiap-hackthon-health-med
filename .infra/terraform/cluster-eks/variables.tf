@@ -5,23 +5,23 @@ variable "region" {
 }
 
 variable "vpcId" {
-    default = "vpc-03e2dfdc264a07455"
+    default = "vpc-0edd2c2df86ed4254"
 }
 
 variable "subnetA" {
-    default = "subnet-02dd8eac5450c11c6"
+    default = "subnet-05d60cb57ec9c2e67"
 }
 
 variable "subnetB" {
-    default = "subnet-0bc7e328b4f6d07a0"
+    default = "subnet-08dc0fa3a89069df7"
 }
 
 variable "subnetC" {
-    default = "subnet-0bc7e328b4f6d07a2"
+    default = "subnet-0e8616577df770dd1"
 }
 
 variable "sgId" {
-    default = "sg-02d4aa982423a7f7c"
+    default = "sg-0a276f8fc9d911bb7"
 }
 
 variable "nodeName" {

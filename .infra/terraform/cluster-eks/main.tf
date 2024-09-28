@@ -1,7 +1,7 @@
 resource "aws_eks_cluster" "health_med" {
   name     = "health_med_eks_cluster"
   role_arn = "arn:aws:iam::${var.account_id}:role/LabRole"
-  version = 1.29
+  version  = 1.29
 
   vpc_config {
     subnet_ids = ["${var.subnetA}", "${var.subnetB}", "${var.subnetC}"]

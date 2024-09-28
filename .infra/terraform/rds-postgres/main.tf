@@ -1,5 +1,5 @@
 resource "aws_db_instance" "health_med_db" {
-    identifier = "health_med_db"
+    identifier = "health-med-db"
     allocated_storage = 5
     engine = "postgres"
     engine_version = "16.1"
@@ -16,7 +16,7 @@ resource "aws_db_instance" "health_med_db" {
 }
 
 resource "aws_security_group" "instance" {
-    name = "health_med_sg"
+    name = "healthmed-sg"
     ingress {
         from_port   = 5432
         to_port     = 5432
