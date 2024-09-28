@@ -40,52 +40,19 @@ spec:
                 name: health-med-secret
           env:
             - name: POSTGRES_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: health-med-secret
-                  key: POSTGRES_HOST
+              value: health-med-db.cixfuebhftfn.us-east-1.rds.amazonaws.com
             - name: POSTGRES_DB
-              valueFrom:
-                secretKeyRef:
-                  name: health-med-secret
-                  key: POSTGRES_DB
+              value: health_med_db
             - name: POSTGRES_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: health-med-secret
-                  key: POSTGRES_USER
+              value: health_med_usr
             - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: health-med-secret
-                  key: POSTGRES_PASSWORD
-            - name: TOKEN_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: health-med-secret
-                  key: TOKEN_SECRET
-            - name: CRYPTO_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: health-med-secret
-                  key: CRYPTO_KEY
-            - name: AWS_ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: health-med-secret
-                  key: AWS_ACCESS_KEY_ID
-            - name: AWS_SECRET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: health-med-secret
-                  key: AWS_SECRET_ACCESS_KEY
-            - name: AWS_SESSION_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: health-med-secret
-                  key: AWS_SESSION_TOKEN
-            - name: AWS_ENDPOINT
-              value: https://sqs.us-east-1.amazonaws.com
+              value: health_med_pwd
+            - name: JWT_KEY
+              value: 3cafe40f92be6ac77d2792b4b267c2da11e3f3087b93bb19c6c5133786984b44
+            - name: MAIL_PASSWORD
+              value: guom rkou rwcu dkju
+            - name: MAIL_USERNAME
+              value: fabianogoes@gmail.com
             - name: AWS_REGION
               value: us-east-1
             - name: POSTGRES_PORT
@@ -97,5 +64,5 @@ spec:
             - name: APP_PORT
               value: ":8080"
             - name: API_VERSION
-              value: "5.0"
+              value: "1.0"
       restartPolicy: Always
